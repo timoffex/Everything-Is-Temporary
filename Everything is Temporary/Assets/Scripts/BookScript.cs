@@ -1,0 +1,289 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BookScript : MonoBehaviour
+{
+    [SerializeField]
+    private AnimatedPageScript animatedPage;
+
+    [SerializeField]
+    private RenderTexture sampleRenderTexture;
+
+    [SerializeField]
+    private Material staticPageMaterial;
+
+    [SerializeField]
+    private Material animatedPageMaterial;
+
+    [SerializeField]
+    private PageInputModule pageInputModule;
+
+    [SerializeField]
+    private Transform allPages;
+
+    [SerializeField]
+    private int initialPageIndex;
+
+
+    void Start()
+    {
+        m_currentLeft = new RenderTexture(sampleRenderTexture);
+        m_currentRight = new RenderTexture(sampleRenderTexture);
+        m_bufferLeft = new RenderTexture(sampleRenderTexture);
+        m_bufferRight = new RenderTexture(sampleRenderTexture);
+
+        m_pageIndex = initialPageIndex;
+        m_isFlipping = false;
+
+        ParsePages();
+
+        DeactivateAllPageCameras();
+
+        // Set up the initial page.
+        m_pagePairs[m_pageIndex].leftCamera.targetTexture = m_currentLeft;
+        m_pagePairs[m_pageIndex].rightCamera.targetTexture = m_currentRight;
+
+        staticPageMaterial.SetTexture("_LeftPageImage", m_currentLeft);
+        staticPageMaterial.SetTexture("_RightPageImage", m_currentRight);
+
+        m_pagePairs[m_pageIndex].leftCamera.gameObject.SetActive(true);
+        m_pagePairs[m_pageIndex].rightCamera.gameObject.SetActive(true);
+
+        pageInputModule.SetLeftCanvas(m_pagePairs[m_pageIndex].leftCanvas);
+        pageInputModule.SetRightCanvas(m_pagePairs[m_pageIndex].rightCanvas);
+    }
+
+
+    /// <summary>
+    /// Invokes TryFlipToPage() and ignores return value. This exists so that
+    /// it can be invoked with UI elements.
+    /// </summary>
+    /// <param name="pageIndex">Page index.</param>
+    public void FlipToPage(int pageIndex)
+    {
+        TryFlipToPage(pageIndex);
+    }
+
+    /// <summary>
+    /// Attempts to flip to the given group of pages.
+    /// </summary>
+    /// <returns><c>true</c>, if flip will happen or if the book is already
+    /// on the correct page, <c>false</c> otherwise.</returns>
+    /// <param name="pageIndex">Page index.</param>
+    public bool TryFlipToPage(int pageIndex)
+    {
+        // Can't flip to pages that don't exist.
+        if (pageIndex < 0 || pageIndex > m_pagePairs.Count)
+            return false;
+
+        if (pageIndex > m_pageIndex)
+            return FlipRightToLeft(pageIndex);
+        else if (pageIndex < m_pageIndex)
+            return FlipLeftToRight(pageIndex);
+        else
+            // True because the book is on the correct page.
+            return true;
+    }
+
+    private bool FlipLeftToRight(int newIndex)
+    {
+        if (m_isFlipping)
+            return false;
+
+        m_isFlipping = true;
+        pageInputModule.IgnoreInput();
+
+        ActivatePageCamerasWithBufferTextures(newIndex);
+        SetInputCanvases(newIndex);
+
+        animatedPageMaterial.SetTexture("_LeftPageImage", m_currentLeft);
+        animatedPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
+
+        // TODO: This should always return true. Check to make sure.
+        animatedPage.FlipLeftToRight(() => FinishLeftToRightFlip(newIndex));
+
+        // Do this after the animated page is made active.
+        staticPageMaterial.SetTexture("_LeftPageImage", m_bufferLeft);
+
+        return true;
+    }
+
+    private bool FlipRightToLeft(int newIndex)
+    {
+        if (m_isFlipping)
+            return false;
+
+        m_isFlipping = true;
+        pageInputModule.IgnoreInput();
+
+        ActivatePageCamerasWithBufferTextures(newIndex);
+        SetInputCanvases(newIndex);
+
+        animatedPageMaterial.SetTexture("_LeftPageImage", m_bufferLeft);
+        animatedPageMaterial.SetTexture("_RightPageImage", m_currentRight);
+
+        // TODO: This should always return true. Check to make sure.
+        animatedPage.FlipRightToLeft(() => FinishRightToLeftFlip(newIndex));
+
+        // Do this after the animated page is made active.
+        staticPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
+
+        return true;
+    }
+
+    private void FinishLeftToRightFlip(int newIndex)
+    {
+        int oldIndex = m_pageIndex;
+        m_pageIndex = newIndex;
+
+        DeactivatePageCameras(oldIndex);
+
+        staticPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
+
+        SwapRenderTextures();
+
+        m_isFlipping = false;
+        pageInputModule.UnignoreInput();
+    }
+
+    private void FinishRightToLeftFlip(int newIndex)
+    {
+        int oldIndex = m_pageIndex;
+        m_pageIndex = newIndex;
+
+        DeactivatePageCameras(oldIndex);
+
+        staticPageMaterial.SetTexture("_LeftPageImage", m_bufferLeft);
+
+        SwapRenderTextures();
+
+        m_isFlipping = false;
+        pageInputModule.UnignoreInput();
+    }
+
+    private void DeactivateAllPageCameras()
+    {
+        foreach (var pair in m_pagePairs)
+        {
+            pair.leftCamera.gameObject.SetActive(false);
+            pair.rightCamera.gameObject.SetActive(false);
+        }
+    }
+
+    private void DeactivatePageCameras(int index)
+    {
+        m_pagePairs[index].leftCamera.gameObject.SetActive(false);
+        m_pagePairs[index].rightCamera.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// Activates the page cameras and sets their targets to the
+    /// m_buffer* variables.
+    /// </summary>
+    /// <param name="index">Page group index.</param>
+    private void ActivatePageCamerasWithBufferTextures(int index)
+    {
+        PagePair pair = m_pagePairs[index];
+
+        pair.leftCamera.targetTexture = m_bufferLeft;
+        pair.rightCamera.targetTexture = m_bufferRight;
+
+        pair.leftCamera.gameObject.SetActive(true);
+        pair.rightCamera.gameObject.SetActive(true);
+    }
+
+    private void SetInputCanvases(int index)
+    {
+        PagePair pair = m_pagePairs[index];
+
+        pageInputModule.SetLeftCanvas(pair.leftCanvas);
+        pageInputModule.SetRightCanvas(pair.rightCanvas);
+    }
+
+    /// <summary>
+    /// Swaps m_current* with m_buffer*. All this does is swaps references.
+    /// At the end of this method, the m_buffer* members refer to where
+    /// m_current* members did previously, and vice versa.
+    /// </summary>
+    private void SwapRenderTextures()
+    {
+        RenderTexture temp;
+
+        temp = m_currentLeft;
+        m_currentLeft = m_bufferLeft;
+        m_bufferLeft = temp;
+
+        temp = m_currentRight;
+        m_currentRight = m_bufferRight;
+        m_bufferRight = temp;
+    }
+
+    /// <summary>
+    /// Extracts cameras and canvases from the allPages object.
+    /// </summary>
+    private void ParsePages()
+    {
+        m_pagePairs = new List<PagePair>();
+        foreach (Transform pageGroup in allPages)
+        {
+            ParsePage(pageGroup);
+        }
+    }
+
+    private void ParsePage(Transform pageGroup)
+    {
+        Camera[] cameras = pageGroup.GetComponentsInChildren<Camera>();
+        Canvas[] canvases = pageGroup.GetComponentsInChildren<Canvas>();
+
+        Debug.Assert(cameras.Length == 2);
+        Debug.Assert(canvases.Length == 2);
+
+        PagePair pair = new PagePair();
+
+        // TODO: This code should alert the user when there are potential errors.
+        if (cameras[0].gameObject.name.Contains("Left"))
+        {
+            pair.leftCamera = cameras[0];
+            pair.rightCamera = cameras[1];
+        }
+        else
+        {
+            pair.leftCamera = cameras[1];
+            pair.rightCamera = cameras[0];
+        }
+
+        if (canvases[0].gameObject.name.Contains("Left"))
+        {
+            pair.leftCanvas = canvases[0];
+            pair.rightCanvas = canvases[1];
+        }
+        else
+        {
+            pair.leftCanvas = canvases[1];
+            pair.rightCanvas = canvases[0];
+        }
+
+        m_pagePairs.Add(pair);
+    }
+
+    private RenderTexture m_currentLeft;
+    private RenderTexture m_currentRight;
+    private RenderTexture m_bufferLeft;
+    private RenderTexture m_bufferRight;
+
+    private bool m_isFlipping;
+
+    private int m_pageIndex;
+
+    private struct PagePair
+    {
+        public Camera leftCamera;
+        public Camera rightCamera;
+
+        public Canvas leftCanvas;
+        public Canvas rightCanvas;
+    }
+
+    private List<PagePair> m_pagePairs;
+}
