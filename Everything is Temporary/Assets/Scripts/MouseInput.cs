@@ -18,13 +18,14 @@ public class MouseInput : MonoBehaviour
     {
         m_camera = GetComponent<Camera>();
 
+        // Create meshes to check for collisions with static pages.
         m_leftPageMesh = new Mesh();
         m_rightPageMesh = new Mesh();
 
         leftPage.BakeMesh(m_leftPageMesh);
         rightPage.BakeMesh(m_rightPageMesh);
 
-        // Rescale meshes.
+        // Rescale meshes so that they are properly positioned.
         RescaleMesh(m_leftPageMesh, leftPage.transform);
         RescaleMesh(m_rightPageMesh, rightPage.transform);
 
@@ -49,7 +50,8 @@ public class MouseInput : MonoBehaviour
         if (hit.transform.CompareTag(bookPageTag))
         {
             PageCoordinates coords = ToPageCoordinates(hit.textureCoord);
-            onPageClick(coords);
+            //onPageClick(coords);
+            onPageClick.Invoke(coords);
         }
     }
 

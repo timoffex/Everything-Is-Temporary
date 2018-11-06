@@ -88,7 +88,7 @@ Material:
     - _EmbeddedPaperOverlay: 0.4
     - _EmbeddedRight: 0.1
     - _EmbeddedTop: 0.15
-    - _EmbeddingPaperMix: 0.213
+    - _EmbeddingPaperMix: 0.226
     - _GlossMapScale: 1
     - _Glossiness: 0.1
     - _GlossyReflections: 1
