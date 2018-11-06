@@ -61,7 +61,12 @@ public class BookScript : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Awake()
+    {
+        GameManager.Singleton.RegisterBook(this);
+    }
+
+    private void Start()
     {
         m_animator = GetComponent<Animator>();
 
