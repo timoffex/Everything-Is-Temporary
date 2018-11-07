@@ -2,32 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class BookScript : MonoBehaviour
 {
     [SerializeField]
-    private AnimatedPageScript animatedPage;
+    private AnimatedPageScript animatedPage = null;
 
     [SerializeField]
-    private RenderTexture sampleRenderTexture;
+    private RenderTexture sampleRenderTexture = null;
 
     [SerializeField]
-    private Material staticPageMaterial;
+    private Material staticPageMaterial = null;
 
     [SerializeField]
-    private Material animatedPageMaterial;
+    private Material animatedPageMaterial = null;
 
     [SerializeField]
-    private PageInputModule pageInputModule;
+    private PageInputModule pageInputModule = null;
 
     [SerializeField]
-    private Transform allPages;
+    private Transform allPages = null;
 
     [SerializeField]
-    private int initialPageIndex;
+    private int initialPageIndex = 0;
 
+    [SerializeField]
+    private string bookDisplayedAnimBool = "Book Displayed";
+
+    [SerializeField]
+    private MouseInput mouseInput = null;
+
+    /// <summary>
+    /// Whether the book is currently on the screen or is slid down. Setting this
+    /// will animate the book sliding down or sliding up.
+    /// </summary>
+    public bool IsDisplayed
+    {
+        get
+        {
+            return m_isDisplayed;
+        }
+
+        set
+        {
+            m_animator.SetBool(bookDisplayedAnimBool, value);
+            m_isDisplayed = value;
+
+            if (!value)
+                // Block mouse input to the book while it's down.
+                m_isDisplayedInputBlocker = pageInputModule.IgnoreInput();
+            else
+            {
+                if (m_isDisplayedInputBlocker != null)
+                    // If the book is back up, allow mouse input again.
+                    m_isDisplayedInputBlocker.Unsubscribe();
+                m_isDisplayedInputBlocker = null;
+            }
+        }
+    }
 
     void Start()
     {
+        m_animator = GetComponent<Animator>();
+
+        IsDisplayed = true;
+
         m_currentLeft = new RenderTexture(sampleRenderTexture);
         m_currentRight = new RenderTexture(sampleRenderTexture);
         m_bufferLeft = new RenderTexture(sampleRenderTexture);
@@ -52,6 +91,8 @@ public class BookScript : MonoBehaviour
 
         pageInputModule.SetLeftCanvas(m_pagePairs[m_pageIndex].leftCanvas);
         pageInputModule.SetRightCanvas(m_pagePairs[m_pageIndex].rightCanvas);
+
+        mouseInput.onPageClick += OnPageClick;
     }
 
 
@@ -92,7 +133,7 @@ public class BookScript : MonoBehaviour
             return false;
 
         m_isFlipping = true;
-        pageInputModule.IgnoreInput();
+        IUnsubscriber inputBlocker = pageInputModule.IgnoreInput();
 
         ActivatePageCamerasWithBufferTextures(newIndex);
         SetInputCanvases(newIndex);
@@ -101,7 +142,11 @@ public class BookScript : MonoBehaviour
         animatedPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
 
         // TODO: This should always return true. Check to make sure.
-        animatedPage.FlipLeftToRight(() => FinishLeftToRightFlip(newIndex));
+        animatedPage.FlipLeftToRight(() =>
+        {
+            FinishLeftToRightFlip(newIndex);
+            inputBlocker.Unsubscribe();
+        });
 
         // Do this after the animated page is made active.
         staticPageMaterial.SetTexture("_LeftPageImage", m_bufferLeft);
@@ -115,7 +160,7 @@ public class BookScript : MonoBehaviour
             return false;
 
         m_isFlipping = true;
-        pageInputModule.IgnoreInput();
+        IUnsubscriber inputBlocker = pageInputModule.IgnoreInput();
 
         ActivatePageCamerasWithBufferTextures(newIndex);
         SetInputCanvases(newIndex);
@@ -124,7 +169,11 @@ public class BookScript : MonoBehaviour
         animatedPageMaterial.SetTexture("_RightPageImage", m_currentRight);
 
         // TODO: This should always return true. Check to make sure.
-        animatedPage.FlipRightToLeft(() => FinishRightToLeftFlip(newIndex));
+        animatedPage.FlipRightToLeft(() =>
+        {
+            FinishRightToLeftFlip(newIndex);
+            inputBlocker.Unsubscribe();
+        });
 
         // Do this after the animated page is made active.
         staticPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
@@ -144,7 +193,6 @@ public class BookScript : MonoBehaviour
         SwapRenderTextures();
 
         m_isFlipping = false;
-        pageInputModule.UnignoreInput();
     }
 
     private void FinishRightToLeftFlip(int newIndex)
@@ -159,7 +207,19 @@ public class BookScript : MonoBehaviour
         SwapRenderTextures();
 
         m_isFlipping = false;
-        pageInputModule.UnignoreInput();
+    }
+
+    private void OnPageClick(PageCoordinates coords)
+    {
+        // If the book is slid down, and the player clicks it, slide
+        // the book back up.
+        if (!IsDisplayed)
+        {
+            Debug.Assert(m_isDisplayedInputBlocker != null);
+
+            // This will trigger the displaying animation.
+            IsDisplayed = true;
+        }
     }
 
     private void DeactivateAllPageCameras()
@@ -286,4 +346,13 @@ public class BookScript : MonoBehaviour
     }
 
     private List<PagePair> m_pagePairs;
+
+    private Animator m_animator;
+    private bool m_isDisplayed;
+
+    /// <summary>
+    /// When m_isDisplayed is set to true, Unsubscribe() should be called
+    /// on this to allow the book to receive mouse input again.
+    /// </summary>
+    private IUnsubscriber m_isDisplayedInputBlocker;
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,14 +12,10 @@ public class PageInputModule : BaseInputModule
     public Canvas leftCanvas;
     public Canvas rightCanvas;
 
-    public void IgnoreInput ()
+    public IUnsubscriber IgnoreInput ()
     {
-        m_ignoringInput = true;
-    }
-
-    public void UnignoreInput ()
-    {
-        m_ignoringInput = false;
+        ++m_inputBlockCount;
+        return new ActionUnsubscriber(() => --m_inputBlockCount);
     }
 
     public void SetLeftCanvas(Canvas left)
@@ -48,7 +45,7 @@ public class PageInputModule : BaseInputModule
 
     public override void Process()
     {
-        if (m_ignoringInput)
+        if (m_inputBlockCount > 0)
             return;
 
         if (m_clickHappened)
@@ -93,5 +90,9 @@ public class PageInputModule : BaseInputModule
     private GraphicRaycaster m_leftRaycaster;
     private GraphicRaycaster m_rightRaycaster;
 
-    private bool m_ignoringInput = false;
+    /// <summary>
+    /// If this is positive, then at least some code requires that this class
+    /// ignores inputs.
+    /// </summary>
+    private int m_inputBlockCount = 0;
 }

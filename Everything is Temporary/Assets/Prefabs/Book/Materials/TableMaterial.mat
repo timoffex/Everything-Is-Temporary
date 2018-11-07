@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: DynamicPageMaterial
-  m_Shader: {fileID: 4800000, guid: 027c32ef24f4c490d9e96082387c7d32, type: 3}
+  m_Name: TableMaterial
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -34,28 +34,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmbeddedTexture:
-        m_Texture: {fileID: 8400000, guid: b45009bce4d14414cb0bc28103470638, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Embedding1:
-        m_Texture: {fileID: 8400000, guid: b45009bce4d14414cb0bc28103470638, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Embedding2:
-        m_Texture: {fileID: 8400000, guid: 4f75ad06282c04afd985502ed64948b7, type: 2}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _LeftPageImage:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 8400000, guid: b45009bce4d14414cb0bc28103470638, type: 2}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,15 +50,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _PaperTexture:
-        m_Texture: {fileID: 2800000, guid: 3868271debf1a492291fc330470d79fc, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _RightPageImage:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -83,14 +59,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmbeddedBottom: 0.25
-    - _EmbeddedLeft: 0.1
-    - _EmbeddedPaperOverlay: 0.4
-    - _EmbeddedRight: 0.1
-    - _EmbeddedTop: 0.15
-    - _EmbeddingPaperMix: 0.226
     - _GlossMapScale: 1
-    - _Glossiness: 0.1
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -102,7 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.5188679, g: 0.3010413, b: 0.3010413, a: 1}
-    - _Embedding1MinMax: {r: 0.1, g: 0.6, b: 0.9, a: 0.9}
-    - _Embedding2MinMax: {r: 1.2, g: 0.5, b: 1.8, a: 0.7}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
