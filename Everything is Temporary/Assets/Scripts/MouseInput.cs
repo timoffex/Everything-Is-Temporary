@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Page-related mouse input. The responsibilities of this script include
+/// firing off events when the user interacts with the page through mouse
+/// clicks and setting up structures to allow for such interaction.
+/// </summary>
 public class MouseInput : MonoBehaviour
 {
 
@@ -11,10 +16,20 @@ public class MouseInput : MonoBehaviour
     public string bookPageTag = "Book Page";
 
     public delegate void PageClickHandler(PageCoordinates location);
-    public event PageClickHandler onPageClick;
 
-    // Use this for initialization
-    void Start()
+    /// <summary>
+    /// This event occurs when the user clicks on a page. Register listeners
+    /// using <code>onPageClick += MyMethod</code> where <code>MyMethod</code>
+    /// is a method that takes a PageCoordinates parameter and returns void.
+    /// </summary>
+    public event PageClickHandler OnPageClick;
+
+    private void Awake()
+    {
+        GameManager.Singleton.RegisterMouseInput(this);
+    }
+
+    private void Start()
     {
         m_camera = GetComponent<Camera>();
 
@@ -36,8 +51,7 @@ public class MouseInput : MonoBehaviour
         rightCollider.sharedMesh = m_rightPageMesh;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (!Input.GetMouseButton(0))
             return;
@@ -51,7 +65,7 @@ public class MouseInput : MonoBehaviour
         {
             PageCoordinates coords = ToPageCoordinates(hit.textureCoord);
             //onPageClick(coords);
-            onPageClick.Invoke(coords);
+            OnPageClick.Invoke(coords);
         }
     }
 

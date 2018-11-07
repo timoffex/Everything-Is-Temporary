@@ -5,6 +5,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// InputModule for book pages. This class is responsible for sending
+/// mouse-related events to page canvases (this is what causes buttons' OnClick()
+/// methods to fire, for example).
+/// </summary>
+/// <remarks>
+/// There can only ever be one InputModule active. This means that other
+/// UI systems will not work simultaneously with pages. When the need arises
+/// for out-of-page UI elements that are usable simultaneously with the book,
+/// we can write a more complex InputModule.
+/// </remarks>
 public class PageInputModule : BaseInputModule
 {
     public MouseInput mouseInput;
@@ -12,6 +23,11 @@ public class PageInputModule : BaseInputModule
     public Canvas leftCanvas;
     public Canvas rightCanvas;
 
+    /// <summary>
+    /// After this method is called, this input module is guaranteed to
+    /// ignore all input until at least after Unsubscribe() is invoked
+    /// on the return value. REMEMBER TO CALL Unsubscribe().
+    /// </summary>
     public IUnsubscriber IgnoreInput ()
     {
         ++m_inputBlockCount;
@@ -34,10 +50,12 @@ public class PageInputModule : BaseInputModule
     {
         base.ActivateModule();
 
+        GameManager.Singleton.RegisterPageInputModule(this);
+
         m_clickHappened = false;
         m_eventSystem = GetComponent<EventSystem>();
 
-        mouseInput.onPageClick += OnPageClick;
+        mouseInput.OnPageClick += OnPageClick;
 
         m_leftRaycaster = leftCanvas.GetComponent<GraphicRaycaster>();
         m_rightRaycaster = rightCanvas.GetComponent<GraphicRaycaster>();

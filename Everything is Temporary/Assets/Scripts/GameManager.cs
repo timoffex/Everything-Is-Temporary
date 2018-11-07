@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>
-/// Contains helper methods for game-specific actions and also contains game
-/// data (e.g. a Player instance; TODO).
-/// 
-/// See also the GameManagerRegistry.cs file.
+/// Contains helper methods for game-specific actions and game data. This script
+/// has the final word on what is displayed, on how transitions happen, and
+/// on what input methods are available (e.g. whether the book can receive
+/// input at any time). Most scripts should interact with each other indirectly
+/// via this class---this will make code more modular and easier to debug and
+/// modify.
 /// </summary>
+/// <remarks>See also the GameManagerRegistry.cs file.</remarks>
 public partial class GameManager : MonoBehaviour
 {
     /// <summary>
@@ -38,11 +42,12 @@ public partial class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (_singleton == null)
+        if (_singleton == null || _singleton == this)
         {
             _singleton = this;
+            m_stateHandler = new ShowingBookHandler(this);
         }
-        else if (_singleton != this)
+        else
         {
             Debug.LogWarning("Duplicate GameManager detected.");
 
@@ -56,8 +61,12 @@ public partial class GameManager : MonoBehaviour
     /// if it was previously down.
     /// </summary>
     /// <param name="pageNumber">Page number.</param>
-    public void DisplayBookPage(int pageNumber)
+    public async Task DisplayBookPage(int pageNumber)
     {
+        // Must be in ShowingBook state.
+        if (!await SwitchToState(State.ShowingBook))
+            return;
+
         if (!Book.IsDisplayed)
             Book.IsDisplayed = true;
 

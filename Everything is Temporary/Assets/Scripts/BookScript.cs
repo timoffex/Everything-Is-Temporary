@@ -18,9 +18,6 @@ public class BookScript : MonoBehaviour
     private Material animatedPageMaterial = null;
 
     [SerializeField]
-    private PageInputModule pageInputModule = null;
-
-    [SerializeField]
     private Transform allPages = null;
 
     [SerializeField]
@@ -50,7 +47,7 @@ public class BookScript : MonoBehaviour
 
             if (!value)
                 // Block mouse input to the book while it's down.
-                m_isDisplayedInputBlocker = pageInputModule.IgnoreInput();
+                m_isDisplayedInputBlocker = PageInput.IgnoreInput();
             else
             {
                 if (m_isDisplayedInputBlocker != null)
@@ -94,10 +91,10 @@ public class BookScript : MonoBehaviour
         m_pagePairs[m_pageIndex].leftCamera.gameObject.SetActive(true);
         m_pagePairs[m_pageIndex].rightCamera.gameObject.SetActive(true);
 
-        pageInputModule.SetLeftCanvas(m_pagePairs[m_pageIndex].leftCanvas);
-        pageInputModule.SetRightCanvas(m_pagePairs[m_pageIndex].rightCanvas);
+        PageInput.SetLeftCanvas(m_pagePairs[m_pageIndex].leftCanvas);
+        PageInput.SetRightCanvas(m_pagePairs[m_pageIndex].rightCanvas);
 
-        mouseInput.onPageClick += OnPageClick;
+        mouseInput.OnPageClick += OnPageClick;
     }
 
 
@@ -138,7 +135,7 @@ public class BookScript : MonoBehaviour
             return false;
 
         m_isFlipping = true;
-        IUnsubscriber inputBlocker = pageInputModule.IgnoreInput();
+        IUnsubscriber inputBlocker = PageInput.IgnoreInput();
 
         ActivatePageCamerasWithBufferTextures(newIndex);
         SetInputCanvases(newIndex);
@@ -165,7 +162,7 @@ public class BookScript : MonoBehaviour
             return false;
 
         m_isFlipping = true;
-        IUnsubscriber inputBlocker = pageInputModule.IgnoreInput();
+        IUnsubscriber inputBlocker = PageInput.IgnoreInput();
 
         ActivatePageCamerasWithBufferTextures(newIndex);
         SetInputCanvases(newIndex);
@@ -262,8 +259,8 @@ public class BookScript : MonoBehaviour
     {
         PagePair pair = m_pagePairs[index];
 
-        pageInputModule.SetLeftCanvas(pair.leftCanvas);
-        pageInputModule.SetRightCanvas(pair.rightCanvas);
+        PageInput.SetLeftCanvas(pair.leftCanvas);
+        PageInput.SetRightCanvas(pair.rightCanvas);
     }
 
     /// <summary>
@@ -360,4 +357,15 @@ public class BookScript : MonoBehaviour
     /// on this to allow the book to receive mouse input again.
     /// </summary>
     private IUnsubscriber m_isDisplayedInputBlocker;
+
+    /// <summary>
+    /// Shorthand for GameManager.Singleton.PageInputModuleSingleton.
+    /// </summary>
+    private PageInputModule PageInput
+    {
+        get
+        {
+            return GameManager.Singleton.PageInputModuleSingleton;
+        }
+    }
 }
