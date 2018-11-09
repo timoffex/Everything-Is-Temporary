@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator))]
 public class BookScript : MonoBehaviour
@@ -18,9 +19,6 @@ public class BookScript : MonoBehaviour
     private Material animatedPageMaterial = null;
 
     [SerializeField]
-    private PageInputModule pageInputModule = null;
-
-    [SerializeField]
     private Transform allPages = null;
 
     [SerializeField]
@@ -28,9 +26,6 @@ public class BookScript : MonoBehaviour
 
     [SerializeField]
     private string bookDisplayedAnimBool = "Book Displayed";
-
-    [SerializeField]
-    private MouseInput mouseInput = null;
 
     /// <summary>
     /// Whether the book is currently on the screen or is slid down. Setting this
@@ -50,7 +45,7 @@ public class BookScript : MonoBehaviour
 
             if (!value)
                 // Block mouse input to the book while it's down.
-                m_isDisplayedInputBlocker = pageInputModule.IgnoreInput();
+                m_isDisplayedInputBlocker = MainRaycastHelper.Singleton.BlockPageInput();
             else
             {
                 if (m_isDisplayedInputBlocker != null)
@@ -61,7 +56,12 @@ public class BookScript : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Awake()
+    {
+        GameManager.Singleton.RegisterBook(this);
+    }
+
+    private void Start()
     {
         m_animator = GetComponent<Animator>();
 
@@ -77,22 +77,16 @@ public class BookScript : MonoBehaviour
 
         ParsePages();
 
-        DeactivateAllPageCameras();
+        DisableAllPages();
 
         // Set up the initial page.
-        m_pagePairs[m_pageIndex].leftCamera.targetTexture = m_currentLeft;
-        m_pagePairs[m_pageIndex].rightCamera.targetTexture = m_currentRight;
+        m_pagePairs[m_pageIndex].SetCameraRenderTargets(m_currentLeft, m_currentRight);
 
         staticPageMaterial.SetTexture("_LeftPageImage", m_currentLeft);
         staticPageMaterial.SetTexture("_RightPageImage", m_currentRight);
 
-        m_pagePairs[m_pageIndex].leftCamera.gameObject.SetActive(true);
-        m_pagePairs[m_pageIndex].rightCamera.gameObject.SetActive(true);
-
-        pageInputModule.SetLeftCanvas(m_pagePairs[m_pageIndex].leftCanvas);
-        pageInputModule.SetRightCanvas(m_pagePairs[m_pageIndex].rightCanvas);
-
-        mouseInput.onPageClick += OnPageClick;
+        m_pagePairs[m_pageIndex].EnableCameras();
+        m_pagePairs[m_pageIndex].EnableRaycasters();
     }
 
 
@@ -133,10 +127,13 @@ public class BookScript : MonoBehaviour
             return false;
 
         m_isFlipping = true;
-        IUnsubscriber inputBlocker = pageInputModule.IgnoreInput();
+        IUnsubscriber inputBlocker = MainRaycastHelper.Singleton.BlockPageInput();
 
-        ActivatePageCamerasWithBufferTextures(newIndex);
-        SetInputCanvases(newIndex);
+        m_pagePairs[m_pageIndex].DisableRaycasters();
+
+        m_pagePairs[newIndex].SetCameraRenderTargets(m_bufferLeft, m_bufferRight);
+        m_pagePairs[newIndex].EnableCameras();
+        m_pagePairs[newIndex].EnableRaycasters();
 
         animatedPageMaterial.SetTexture("_LeftPageImage", m_currentLeft);
         animatedPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
@@ -160,10 +157,13 @@ public class BookScript : MonoBehaviour
             return false;
 
         m_isFlipping = true;
-        IUnsubscriber inputBlocker = pageInputModule.IgnoreInput();
+        IUnsubscriber inputBlocker = MainRaycastHelper.Singleton.BlockPageInput();
 
-        ActivatePageCamerasWithBufferTextures(newIndex);
-        SetInputCanvases(newIndex);
+        m_pagePairs[m_pageIndex].DisableRaycasters();
+
+        m_pagePairs[newIndex].SetCameraRenderTargets(m_bufferLeft, m_bufferRight);
+        m_pagePairs[newIndex].EnableCameras();
+        m_pagePairs[newIndex].EnableRaycasters();
 
         animatedPageMaterial.SetTexture("_LeftPageImage", m_bufferLeft);
         animatedPageMaterial.SetTexture("_RightPageImage", m_currentRight);
@@ -186,7 +186,7 @@ public class BookScript : MonoBehaviour
         int oldIndex = m_pageIndex;
         m_pageIndex = newIndex;
 
-        DeactivatePageCameras(oldIndex);
+        m_pagePairs[oldIndex].DisableCameras();
 
         staticPageMaterial.SetTexture("_RightPageImage", m_bufferRight);
 
@@ -200,7 +200,7 @@ public class BookScript : MonoBehaviour
         int oldIndex = m_pageIndex;
         m_pageIndex = newIndex;
 
-        DeactivatePageCameras(oldIndex);
+        m_pagePairs[oldIndex].DisableCameras();
 
         staticPageMaterial.SetTexture("_LeftPageImage", m_bufferLeft);
 
@@ -209,56 +209,13 @@ public class BookScript : MonoBehaviour
         m_isFlipping = false;
     }
 
-    private void OnPageClick(PageCoordinates coords)
+    private void DisableAllPages()
     {
-        // If the book is slid down, and the player clicks it, slide
-        // the book back up.
-        if (!IsDisplayed)
+        for (int i = 0; i < m_pagePairs.Count; ++i)
         {
-            Debug.Assert(m_isDisplayedInputBlocker != null);
-
-            // This will trigger the displaying animation.
-            IsDisplayed = true;
+            m_pagePairs[i].DisableCameras();
+            m_pagePairs[i].DisableRaycasters();
         }
-    }
-
-    private void DeactivateAllPageCameras()
-    {
-        foreach (var pair in m_pagePairs)
-        {
-            pair.leftCamera.gameObject.SetActive(false);
-            pair.rightCamera.gameObject.SetActive(false);
-        }
-    }
-
-    private void DeactivatePageCameras(int index)
-    {
-        m_pagePairs[index].leftCamera.gameObject.SetActive(false);
-        m_pagePairs[index].rightCamera.gameObject.SetActive(false);
-    }
-
-    /// <summary>
-    /// Activates the page cameras and sets their targets to the
-    /// m_buffer* variables.
-    /// </summary>
-    /// <param name="index">Page group index.</param>
-    private void ActivatePageCamerasWithBufferTextures(int index)
-    {
-        PagePair pair = m_pagePairs[index];
-
-        pair.leftCamera.targetTexture = m_bufferLeft;
-        pair.rightCamera.targetTexture = m_bufferRight;
-
-        pair.leftCamera.gameObject.SetActive(true);
-        pair.rightCamera.gameObject.SetActive(true);
-    }
-
-    private void SetInputCanvases(int index)
-    {
-        PagePair pair = m_pagePairs[index];
-
-        pageInputModule.SetLeftCanvas(pair.leftCanvas);
-        pageInputModule.SetRightCanvas(pair.rightCanvas);
     }
 
     /// <summary>
@@ -284,47 +241,18 @@ public class BookScript : MonoBehaviour
     /// </summary>
     private void ParsePages()
     {
-        m_pagePairs = new List<PagePair>();
+        m_pagePairs = new List<PageScript>();
+
         foreach (Transform pageGroup in allPages)
         {
-            ParsePage(pageGroup);
+            var pageScript = pageGroup.GetComponent<PageScript>();
+
+            if (pageScript != null)
+                m_pagePairs.Add(pageScript);
+            else
+                Debug.LogWarningFormat("Object {0} (child of {1}) does not have a PageScript.",
+                                       pageGroup.name, allPages.name);
         }
-    }
-
-    private void ParsePage(Transform pageGroup)
-    {
-        Camera[] cameras = pageGroup.GetComponentsInChildren<Camera>();
-        Canvas[] canvases = pageGroup.GetComponentsInChildren<Canvas>();
-
-        Debug.Assert(cameras.Length == 2);
-        Debug.Assert(canvases.Length == 2);
-
-        PagePair pair = new PagePair();
-
-        // TODO: This code should alert the user when there are potential errors.
-        if (cameras[0].gameObject.name.Contains("Left"))
-        {
-            pair.leftCamera = cameras[0];
-            pair.rightCamera = cameras[1];
-        }
-        else
-        {
-            pair.leftCamera = cameras[1];
-            pair.rightCamera = cameras[0];
-        }
-
-        if (canvases[0].gameObject.name.Contains("Left"))
-        {
-            pair.leftCanvas = canvases[0];
-            pair.rightCanvas = canvases[1];
-        }
-        else
-        {
-            pair.leftCanvas = canvases[1];
-            pair.rightCanvas = canvases[0];
-        }
-
-        m_pagePairs.Add(pair);
     }
 
     private RenderTexture m_currentLeft;
@@ -336,16 +264,7 @@ public class BookScript : MonoBehaviour
 
     private int m_pageIndex;
 
-    private struct PagePair
-    {
-        public Camera leftCamera;
-        public Camera rightCamera;
-
-        public Canvas leftCanvas;
-        public Canvas rightCanvas;
-    }
-
-    private List<PagePair> m_pagePairs;
+    private List<PageScript> m_pagePairs;
 
     private Animator m_animator;
     private bool m_isDisplayed;

@@ -21,6 +21,11 @@ public class ActionUnsubscriber : IUnsubscriber
         m_used = false;
     }
 
+    ~ActionUnsubscriber()
+    {
+        Unsubscribe();
+    }
+
     public void Unsubscribe()
     {
         if (!m_used && m_action != null)

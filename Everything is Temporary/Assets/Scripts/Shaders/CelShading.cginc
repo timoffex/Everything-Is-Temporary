@@ -2,7 +2,6 @@
 
 inline half4 LightingCel (SurfaceOutputStandard s, UnityGI gi)
 {
-    // TODO: Customize this function.
     half NdotL = floor (dot (s.Normal, gi.light.dir) * 4) / 4;
     half4 c;
     c.rgb = s.Albedo * gi.light.color.rgb * NdotL;

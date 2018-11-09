@@ -271,7 +271,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 92613140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 1
 --- !u!114 &92613143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,8 +693,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -845,7 +846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: -5.0000153, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &189103142
@@ -924,8 +925,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1001,7 +1002,7 @@ RectTransform:
   m_Children:
   - {fileID: 1686860125}
   m_Father: {fileID: 1867192171}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1047,8 +1048,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1314,8 +1315,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1512,8 +1513,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1590,7 +1591,7 @@ Transform:
   - {fileID: 1745738255}
   - {fileID: 1057161766}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &390526488
 GameObject:
@@ -1668,8 +1669,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1944,7 +1945,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 471862833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -1952,6 +1953,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 0
 --- !u!114 &471862836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,8 +2071,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2163,7 +2165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 514253599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -2171,6 +2173,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 1
 --- !u!114 &514253602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2237,7 +2240,7 @@ Camera:
   m_GameObject: {fileID: 516744539}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -2410,7 +2413,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 591580426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -2418,6 +2421,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 1
 --- !u!114 &591580429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2469,7 +2473,7 @@ GameObject:
   - component: {fileID: 670159823}
   - component: {fileID: 670159822}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2483,7 +2487,7 @@ Light:
   m_GameObject: {fileID: 670159821}
   m_Enabled: 1
   serializedVersion: 8
-  m_Type: 0
+  m_Type: 2
   m_Color: {r: 0.9622642, g: 0.80887324, b: 0.5855287, a: 1}
   m_Intensity: 3
   m_Range: 30
@@ -2523,7 +2527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 120.73801, y: -44.78, z: -40.463013}
 --- !u!1 &682233120
 GameObject:
@@ -2676,8 +2680,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2798,12 +2802,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702610111}
   m_CullTransparentMesh: 0
---- !u!114 &720260444 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114750682779844196, guid: 19cf7516b604e4942bca22b8a5fb409f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1346631176}
-  m_Script: {fileID: 11500000, guid: 785ba170b072e4384a79444130c1c3da, type: 3}
 --- !u!1 &737483409
 GameObject:
   m_ObjectHideFlags: 0
@@ -3073,7 +3071,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 776480435}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -3081,6 +3079,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 0
 --- !u!114 &776480438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,6 +3131,7 @@ GameObject:
   - component: {fileID: 777256796}
   - component: {fileID: 777256795}
   - component: {fileID: 777256794}
+  - component: {fileID: 777256798}
   - component: {fileID: 777256797}
   m_Layer: 0
   m_Name: Main Camera
@@ -3155,7 +3155,7 @@ Camera:
   m_GameObject: {fileID: 777256793}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -3172,7 +3172,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 10
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3198,7 +3198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &777256797
 MonoBehaviour:
@@ -3208,12 +3208,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 777256793}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf7df50c600e43f182c65e9890f061f, type: 3}
+  m_Script: {fileID: 11500000, guid: e342d4d67bc8c4a139ad018ea23c053e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftPage: {fileID: 2101045178}
-  rightPage: {fileID: 1140511617}
-  bookPageTag: Book Page
+--- !u!114 &777256798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 777256793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64bf9634a1a1945bca009b21344a3766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &779553807
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,8 +3375,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3414,6 +3422,22 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 802272383}
   m_CullTransparentMesh: 0
+--- !u!1 &830506837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1486183813163456, guid: 19cf7516b604e4942bca22b8a5fb409f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1346631176}
+--- !u!114 &830506838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830506837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c35151d84ae4e36bff5f58d0bd33bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &846156966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3490,8 +3514,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3613,8 +3637,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3736,8 +3760,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3928,8 +3952,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4126,8 +4150,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4360,81 +4384,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 926138485}
   m_CullTransparentMesh: 0
---- !u!1 &939214204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 939214205}
-  - component: {fileID: 939214207}
-  - component: {fileID: 939214206}
-  m_Layer: 0
-  m_Name: Slide Down Button Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &939214205
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 939214204}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1434650920}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &939214206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 939214204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 29
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Slide Down
---- !u!222 &939214207
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 939214204}
-  m_CullTransparentMesh: 0
 --- !u!1 &963438207
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,12 +4409,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 963438207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fad141dbbcec489881e6651f8d4dca5, type: 3}
+  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInput: {fileID: 777256797}
-  leftCanvas: {fileID: 1867192174}
-  rightCanvas: {fileID: 591580430}
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!114 &963438209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4491,7 +4444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &970834765
 GameObject:
@@ -4598,7 +4551,7 @@ RectTransform:
   m_Children:
   - {fileID: 83739380}
   m_Father: {fileID: 1867192171}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4644,8 +4597,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4699,6 +4652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 984298272}
+  - component: {fileID: 984298273}
   m_Layer: 0
   m_Name: Page 1 - Crew
   m_TagString: Untagged
@@ -4723,6 +4677,21 @@ Transform:
   m_Father: {fileID: 371299222}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &984298273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984298271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c19ac6be946412f9683fc94fcd3b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCamera: {fileID: 1552752235}
+  rightCamera: {fileID: 1985367921}
+  leftRaycaster: {fileID: 776480437}
+  rightRaycaster: {fileID: 514253601}
 --- !u!1 &987090409
 GameObject:
   m_ObjectHideFlags: 0
@@ -4874,8 +4843,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4997,8 +4966,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5052,6 +5021,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057161766}
+  - component: {fileID: 1057161767}
   m_Layer: 0
   m_Name: Page 4 - Main Menu
   m_TagString: Untagged
@@ -5076,6 +5046,21 @@ Transform:
   m_Father: {fileID: 371299222}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1057161767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1057161765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c19ac6be946412f9683fc94fcd3b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCamera: {fileID: 1750106865}
+  rightCamera: {fileID: 779553808}
+  leftRaycaster: {fileID: 1063609405}
+  rightRaycaster: {fileID: 1727108191}
 --- !u!1 &1063609403
 GameObject:
   m_ObjectHideFlags: 0
@@ -5128,7 +5113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1063609403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -5136,6 +5121,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 0
 --- !u!114 &1063609406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5185,6 +5171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081292056}
+  - component: {fileID: 1081292057}
   m_Layer: 0
   m_Name: Page 0 - Map
   m_TagString: Untagged
@@ -5209,6 +5196,21 @@ Transform:
   m_Father: {fileID: 371299222}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1081292057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1081292055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c19ac6be946412f9683fc94fcd3b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCamera: {fileID: 1970048046}
+  rightCamera: {fileID: 516744540}
+  leftRaycaster: {fileID: 1867192172}
+  rightRaycaster: {fileID: 591580428}
 --- !u!1 &1099388269
 GameObject:
   m_ObjectHideFlags: 0
@@ -5285,8 +5287,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5332,11 +5334,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1099388269}
   m_CullTransparentMesh: 0
---- !u!137 &1140511617 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 137358217933944622, guid: 19cf7516b604e4942bca22b8a5fb409f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1346631176}
 --- !u!1 &1153604549
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,6 +5484,22 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1155276690}
   m_CullTransparentMesh: 0
+--- !u!1 &1182114087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1278663651688716, guid: 19cf7516b604e4942bca22b8a5fb409f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1346631176}
+--- !u!114 &1182114088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1182114087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c35151d84ae4e36bff5f58d0bd33bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1192678611
 GameObject:
   m_ObjectHideFlags: 0
@@ -5638,8 +5651,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5830,8 +5843,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5999,7 +6012,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329793578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -6007,6 +6020,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 1
 --- !u!114 &1329793581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6085,7 +6099,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4064778619226124, guid: 19cf7516b604e4942bca22b8a5fb409f, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 95288201935553294, guid: 19cf7516b604e4942bca22b8a5fb409f,
         type: 2}
@@ -6096,7 +6110,7 @@ Prefab:
         type: 2}
       propertyPath: pageInputModule
       value: 
-      objectReference: {fileID: 963438208}
+      objectReference: {fileID: 0}
     - target: {fileID: 114750682779844196, guid: 19cf7516b604e4942bca22b8a5fb409f,
         type: 2}
       propertyPath: allPages
@@ -6106,7 +6120,7 @@ Prefab:
         type: 2}
       propertyPath: mouseInput
       value: 
-      objectReference: {fileID: 777256797}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19cf7516b604e4942bca22b8a5fb409f, type: 2}
   m_IsPrefabAsset: 0
@@ -6264,6 +6278,106 @@ Transform:
   m_Father: {fileID: 1745738255}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1389810585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389810589}
+  - component: {fileID: 1389810588}
+  - component: {fileID: 1389810587}
+  - component: {fileID: 1389810586}
+  - component: {fileID: 1389810590}
+  m_Layer: 8
+  m_Name: Sidescrolling Quad
+  m_TagString: Sidescroll View
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &1389810586
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389810585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1389810587
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389810585}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 475956c481edc4e32beaa9033ed8ccc7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1389810588
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389810585}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1389810589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389810585}
+  m_LocalRotation: {x: -0.43952814, y: 0.5553683, z: -0.44618165, w: -0.547086}
+  m_LocalPosition: {x: -3.32, y: 1.66, z: 1.01}
+  m_LocalScale: {x: 8, y: 4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1389810590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389810585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44ea488749554276a2d4dd863d23d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_renderTexture: {fileID: 8400000, guid: 3f0657f1a9eca4f2b87294b791f66857, type: 2}
 --- !u!1 &1394681215
 GameObject:
   m_ObjectHideFlags: 0
@@ -6418,129 +6532,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1434650919
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1434650920}
-  - component: {fileID: 1434650923}
-  - component: {fileID: 1434650922}
-  - component: {fileID: 1434650921}
-  m_Layer: 0
-  m_Name: Slide Down Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1434650920
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434650919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 939214205}
-  m_Father: {fileID: 1867192171}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -200}
-  m_SizeDelta: {x: 260, y: 40}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1434650921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434650919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1434650922}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: set_IsDisplayed
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1434650922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434650919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1434650923
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1434650919}
-  m_CullTransparentMesh: 0
 --- !u!1 &1448690971
 GameObject:
   m_ObjectHideFlags: 0
@@ -7020,7 +7011,7 @@ Camera:
   m_GameObject: {fileID: 1552752234}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -7121,7 +7112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1586711410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -7129,6 +7120,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 0
 --- !u!114 &1586711413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7627,8 +7619,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7797,7 +7789,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727108189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -7805,6 +7797,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 1
 --- !u!114 &1727108192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7854,6 +7847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1745738255}
+  - component: {fileID: 1745738256}
   m_Layer: 0
   m_Name: Page 3 - Event Log
   m_TagString: Untagged
@@ -7878,6 +7872,21 @@ Transform:
   m_Father: {fileID: 371299222}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1745738256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1745738254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c19ac6be946412f9683fc94fcd3b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCamera: {fileID: 93261204}
+  rightCamera: {fileID: 1351774584}
+  leftRaycaster: {fileID: 471862835}
+  rightRaycaster: {fileID: 1329793580}
 --- !u!1 &1750106864
 GameObject:
   m_ObjectHideFlags: 0
@@ -8106,8 +8115,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8229,8 +8238,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8276,6 +8285,46 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791576014}
   m_CullTransparentMesh: 0
+--- !u!1 &1793442493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1793442495}
+  - component: {fileID: 1793442494}
+  m_Layer: 0
+  m_Name: GameManagerProxy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1793442494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1793442493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e833cf8dc1754fa784c7a7caf4b92ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1793442495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1793442493}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.6129856, y: 2.7029777, z: 0.69140625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1818052071
 GameObject:
   m_ObjectHideFlags: 0
@@ -8454,7 +8503,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1434650920}
   - {fileID: 982812346}
   - {fileID: 245995796}
   - {fileID: 2001281991}
@@ -8474,7 +8522,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1867192170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b71d88783a5b4b419e9685113eef2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -8482,6 +8530,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  side: 0
 --- !u!114 &1867192173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8599,8 +8648,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8887,7 +8936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1910008547
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8955,7 +9004,7 @@ Transform:
   m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
 --- !u!1 &1970048045
 GameObject:
@@ -8982,7 +9031,7 @@ Camera:
   m_GameObject: {fileID: 1970048045}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -9134,7 +9183,7 @@ Camera:
   m_GameObject: {fileID: 1985367920}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -9216,7 +9265,7 @@ RectTransform:
   m_Children:
   - {fileID: 1983876146}
   m_Father: {fileID: 1867192171}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9262,8 +9311,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 720260444}
-        m_MethodName: FlipToPage
+      - m_Target: {fileID: 1793442494}
+        m_MethodName: DisplayBookPage
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9536,6 +9585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097476225}
+  - component: {fileID: 2097476226}
   m_Layer: 0
   m_Name: Page 2 - Inventory
   m_TagString: Untagged
@@ -9560,8 +9610,18 @@ Transform:
   m_Father: {fileID: 371299222}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &2101045178 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 137662342708440084, guid: 19cf7516b604e4942bca22b8a5fb409f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1346631176}
+--- !u!114 &2097476226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097476224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c19ac6be946412f9683fc94fcd3b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftCamera: {fileID: 1665748917}
+  rightCamera: {fileID: 1348202867}
+  leftRaycaster: {fileID: 1586711412}
+  rightRaycaster: {fileID: 92613142}
