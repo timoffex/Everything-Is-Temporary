@@ -38,34 +38,98 @@ public class PageScript : MonoBehaviour
     [ContextMenu("Setup Page")]
     public void SetupPage()
     {
+        leftRaycaster = null;
+        rightRaycaster = null;
+        leftCamera = null;
+        rightCamera = null;
+
         Camera[] cameras = GetComponentsInChildren<Camera>();
         GraphicRaycaster[] raycasters = GetComponentsInChildren<GraphicRaycaster>();
 
-        Debug.Assert(cameras.Length == 2);
-        Debug.Assert(raycasters.Length == 2);
-
-        // TODO: This code should alert the user when there are potential errors.
-        if (cameras[0].gameObject.name.Contains("Left"))
+        if (cameras.Length != 2)
         {
-            leftCamera = cameras[0];
-            rightCamera = cameras[1];
+            Debug.LogFormat("There must be exactly two cameras in a page.");
+            return;
+        }
+
+        if (raycasters.Length != 2)
+        {
+            Debug.LogFormat("There must be exactly two raycasters in a page.");
+            return;
+        }
+
+        foreach (var cam in cameras)
+            ConfigureCamera(cam);
+
+        foreach (var raycaster in raycasters)
+            ConfigureRaycaster(raycaster);
+    }
+
+    private void ConfigureCamera(Camera cam)
+    {
+        GameObject go = cam.gameObject;
+
+        if (go.name.ToLower().Contains("left"))
+        {
+            leftCamera = cam;
+        }
+        else if (go.name.ToLower().Contains("right"))
+        {
+            rightCamera = cam;
         }
         else
         {
-            leftCamera = cameras[1];
-            rightCamera = cameras[0];
+            Debug.LogFormat("Child {0} of {1} does not have 'left' or 'right'" +
+                            " in its name.", go.name, gameObject.name);
         }
+    }
 
-        if (raycasters[0].gameObject.name.Contains("Left"))
+    private void ConfigureRaycaster(GraphicRaycaster raycaster)
+    {
+
+        if (!(raycaster is PageRaycaster))
         {
-            leftRaycaster = raycasters[0];
-            rightRaycaster = raycasters[1];
+            Debug.LogFormat("Raycaster on child {0} of {1} is a GraphicRaycaster" +
+                            " but not a PageRaycaster. Replacing with a" +
+                            " PageRaycaster.",
+                            raycaster.gameObject.name,
+                            gameObject.name);
+
+            GameObject go = raycaster.gameObject;
+            DestroyImmediate(raycaster);
+            PageRaycaster pageRaycaster = go.AddComponent<PageRaycaster>();
+
+            if (go.name.ToLower().Contains("left"))
+            {
+                pageRaycaster.side = PageCoordinates.PageSide.Left;
+                leftRaycaster = pageRaycaster;
+            }
+            else if (go.name.ToLower().Contains("right"))
+            {
+                pageRaycaster.side = PageCoordinates.PageSide.Right;
+                rightRaycaster = pageRaycaster;
+            }
+            else
+            {
+                Debug.LogFormat("Child {0} of {1} does not have 'left' or 'right'" +
+                                " in its name.", go.name, gameObject.name);
+            }
         }
         else
         {
-            leftRaycaster = raycasters[1];
-            rightRaycaster= raycasters[0];
+            PageRaycaster pageRaycaster = raycaster as PageRaycaster;
+
+            switch (pageRaycaster.side)
+            {
+                case PageCoordinates.PageSide.Left:
+                    leftRaycaster = pageRaycaster;
+                    break;
+                case PageCoordinates.PageSide.Right:
+                    rightRaycaster = pageRaycaster;
+                    break;
+            }
         }
+
     }
 #endif
 

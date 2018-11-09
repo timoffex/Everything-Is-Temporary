@@ -12,11 +12,9 @@ public partial class GameManager : MonoBehaviour
 
     public async Task LoadTown(string townScene)
     {
-        /*
         // If this is the loaded town, don't do anything.
         if (m_loadedTown == townScene)
             return;
-        */
 
         // Transition to the state where only the book is shown. If this
         // is not possible, cancel.

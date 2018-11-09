@@ -12,7 +12,16 @@ public partial class GameManager : MonoBehaviour
     /// </summary>
     private enum State
     {
-        ShowingBook, ShowingTown
+        /// <summary>
+        /// This state means the GameManager is showing only the book.
+        /// </summary>
+        ShowingBook,
+
+        /// <summary>
+        /// This state means the GameManager is showing the book and a "town"
+        /// (a sidescrolling environment).
+        /// </summary>
+        ShowingTown
     };
 
     /// <summary>

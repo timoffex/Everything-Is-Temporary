@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+/// <summary>
+/// Class that helps with raycasting from the main view. Used by PageRaycaster
+/// and SidescrollRaycaster.
+/// </summary>
 [RequireComponent(typeof(Camera))]
 public class MainRaycastHelper : MonoBehaviour
 {
@@ -27,8 +31,8 @@ public class MainRaycastHelper : MonoBehaviour
     /// <summary>
     /// Blocks input to the book pages. Returns a token that represents the
     /// block request; call Unsubscribe() when blocking is no longer necessary.
-    /// As long as there is at least one blocking token out there, mouse input
-    /// to the book will be blocked.
+    /// As long as there is at least one blocking token still in existence,
+    /// mouse input to the book will be blocked.
     /// </summary>
     /// <returns>The page input.</returns>
     public IUnsubscriber BlockPageInput()
@@ -36,21 +40,6 @@ public class MainRaycastHelper : MonoBehaviour
         m_pageBlockerCount++;
 
         return new ActionUnsubscriber(() => m_pageBlockerCount--);
-    }
-
-    private void Awake()
-    {
-        if (m_camera == null)
-            m_camera = GetComponent<Camera>();
-
-        m_prevBookCasts = new Dictionary<Vector2, PageCoordinates?>();
-        m_prevScrollviewCasts = new Dictionary<Vector2, Vector2?>();
-    }
-
-    private void FixedUpdate()
-    {
-        m_prevBookCasts.Clear();
-        m_prevScrollviewCasts.Clear();
     }
 
     public PageCoordinates? RaycastBook(Vector2 mousePosition)
@@ -122,6 +111,21 @@ public class MainRaycastHelper : MonoBehaviour
             return new PageCoordinates(PageCoordinates.PageSide.Left, pageSpace);
         else
             return new PageCoordinates(PageCoordinates.PageSide.Right, pageSpace - Vector2.right);
+    }
+
+    private void Awake()
+    {
+        if (m_camera == null)
+            m_camera = GetComponent<Camera>();
+
+        m_prevBookCasts = new Dictionary<Vector2, PageCoordinates?>();
+        m_prevScrollviewCasts = new Dictionary<Vector2, Vector2?>();
+    }
+
+    private void FixedUpdate()
+    {
+        m_prevBookCasts.Clear();
+        m_prevScrollviewCasts.Clear();
     }
 
     private Camera m_camera = null;

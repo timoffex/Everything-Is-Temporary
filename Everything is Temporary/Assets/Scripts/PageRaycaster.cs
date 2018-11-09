@@ -4,6 +4,10 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
+/// <summary>
+/// Replacement for GraphicRaycaster that takes input from a book page. Use
+/// on page canvases.
+/// </summary>
 [RequireComponent(typeof(Canvas))]
 public class PageRaycaster : GraphicRaycaster
 {
