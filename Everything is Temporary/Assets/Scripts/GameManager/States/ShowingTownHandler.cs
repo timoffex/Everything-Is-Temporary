@@ -69,9 +69,6 @@ public partial class GameManager : MonoBehaviour
             gm.m_townInputBlocker.Unsubscribe();
             gm.m_townInputBlocker = null;
 
-            gm.TownEventSystem.enabled = false;
-            gm.BookEventSystem.enabled = true;
-
             return new ShowingBookHandler(gm);
         }
     }

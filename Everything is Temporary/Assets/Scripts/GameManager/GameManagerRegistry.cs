@@ -4,6 +4,9 @@
  * Most objects don't have to be registered, although that will help performance
  * by preventing a FindObjectOfType() call. The registry also selects the objects
  * with which the GameManager script interacts.
+ * 
+ * The most important reason for the existence of this is to register objects
+ * that cannot otherwise be singletons (e.g. existing classes, like Camera).
  * */
 
 using System.Collections;
@@ -74,25 +77,6 @@ public partial class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the MouseInput instance.
-    /// </summary>
-    /// <returns><c>true</c>, if mouse input was registered, <c>false</c> otherwise.</returns>
-    /// <param name="mouseInput">Mouse input.</param>
-    public bool RegisterMouseInput(MouseInput mouseInput)
-    {
-        if (m_mouseInput == null || m_mouseInput == mouseInput)
-        {
-            m_mouseInput = mouseInput;
-            return true;
-        }
-        else
-        {
-            Debug.LogWarning("Duplicate MouseInput detected.");
-            return false;
-        }
-    }
-
-    /// <summary>
     /// Registers the town camera.
     /// </summary>
     /// <returns><c>true</c>, if town camera was registered, <c>false</c> otherwise.</returns>
@@ -106,28 +90,9 @@ public partial class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Duplicate 'additional camera' detected.");
+            Debug.LogWarning("Duplicate town camera detected.");
             return false;
         }
-    }
-
-    /// <summary>
-    /// Registers the town event system.
-    /// </summary>
-    /// <returns><c>true</c>, if town event system was registered, <c>false</c> otherwise.</returns>
-    public bool RegisterTownEventSystem(EventSystem eventSystem)
-    {
-        if (m_townEventSystem == null || m_townEventSystem == eventSystem)
-        {
-            m_townEventSystem = eventSystem;
-            return true;
-        }
-        else
-        {
-            Debug.LogWarning("Duplicate town event system detected.");
-            return false;
-        }
-
     }
 
     private T FindOrDefault<T>(string warningMessage) where T : Component
@@ -147,51 +112,11 @@ public partial class GameManager : MonoBehaviour
         return go.AddComponent<T>();
     }
 
-    private MouseInput MouseInputSingleton
-    {
-        get
-        {
-            if (m_mouseInput == null)
-                m_mouseInput = FindOrDefault<MouseInput>("Couldn't find a MouseInput.");
-            return m_mouseInput;
-        }
-    }
-
-    private EventSystem TownEventSystem
-    {
-        get
-        {
-            if (m_townEventSystem == null)
-                // Don't FindOrDefault() because that will pick up other event systems.
-                m_townEventSystem = Default<EventSystem>("Couldn't find town event system.");
-            return m_townEventSystem;
-        }
-    }
-
-    private EventSystem BookEventSystem
-    {
-        get
-        {
-            if (m_bookEventSystem == null)
-                m_bookEventSystem = FindOrDefault<EventSystem>("No BookEventSystem registered. Using default.");
-            return m_bookEventSystem;
-        }
-    }
-
     private BookScript m_book;
     private Camera m_bookCamera;
-
-    private MouseInput m_mouseInput;
 
     /// <summary>
     /// The main camera in the currently-loaded town scene.
     /// </summary>
     private Camera m_townCamera;
-
-    /// <summary>
-    /// The currently loaded town's input module.
-    /// </summary>
-    private EventSystem m_townEventSystem = null;
-
-    private EventSystem m_bookEventSystem;
 }

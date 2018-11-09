@@ -74,10 +74,6 @@ public partial class GameManager : MonoBehaviour
             gm.m_townCamera.enabled = true;
             gm.BookCamera.enabled = false;
 
-            // Enable town event system.
-            gm.BookEventSystem.enabled = false;
-            gm.TownEventSystem.enabled = true;
-
             return new ShowingTownHandler(gm);
         }
     }
