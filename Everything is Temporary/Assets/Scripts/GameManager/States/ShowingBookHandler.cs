@@ -40,8 +40,7 @@ public partial class GameManager : MonoBehaviour
             Debug.Assert(gm.m_townCamera != null);
 
             // Disable mouse inputs to pages.
-            // TODO: Disable MouseInput too.
-            gm.m_townInputBlocker = gm.m_pageInputModule.IgnoreInput();
+            gm.m_townInputBlocker = MainRaycastHelper.Singleton.BlockPageInput();
 
             // Fade out main camera.
             {

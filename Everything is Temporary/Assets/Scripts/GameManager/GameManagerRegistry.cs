@@ -23,13 +23,13 @@ public partial class GameManager : MonoBehaviour
         }
     }
 
-    public PageInputModule PageInputModuleSingleton
+    public Camera BookCamera
     {
         get
         {
-            if (m_pageInputModule == null)
-                m_pageInputModule = FindOrDefault<PageInputModule>("Couldn't find a PageInputModule.");
-            return m_pageInputModule;
+            if (m_bookCamera == null)
+                m_bookCamera = FindOrDefault<Camera>("Couldn't find a book camera.");
+            return m_bookCamera;
         }
     }
 
@@ -93,25 +93,6 @@ public partial class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the PageInputModule instance.
-    /// </summary>
-    /// <returns><c>true</c>, if page input module was registered, <c>false</c> otherwise.</returns>
-    /// <param name="pageInputModule">Page input module.</param>
-    public bool RegisterPageInputModule(PageInputModule pageInputModule)
-    {
-        if (m_pageInputModule == null || m_pageInputModule == pageInputModule)
-        {
-            m_pageInputModule = pageInputModule;
-            return true;
-        }
-        else
-        {
-            Debug.LogWarning("Duplicate PageInputModule detected.");
-            return false;
-        }
-    }
-
-    /// <summary>
     /// Registers the town camera.
     /// </summary>
     /// <returns><c>true</c>, if town camera was registered, <c>false</c> otherwise.</returns>
@@ -166,16 +147,6 @@ public partial class GameManager : MonoBehaviour
         return go.AddComponent<T>();
     }
 
-    private Camera BookCamera
-    {
-        get
-        {
-            if (m_bookCamera == null)
-                m_bookCamera = FindOrDefault<Camera>("Couldn't find a book camera.");
-            return m_bookCamera;
-        }
-    }
-
     private MouseInput MouseInputSingleton
     {
         get
@@ -211,7 +182,6 @@ public partial class GameManager : MonoBehaviour
     private Camera m_bookCamera;
 
     private MouseInput m_mouseInput;
-    private PageInputModule m_pageInputModule;
 
     /// <summary>
     /// The main camera in the currently-loaded town scene.
