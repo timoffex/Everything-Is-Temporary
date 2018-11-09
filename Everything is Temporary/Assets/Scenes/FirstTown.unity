@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 68808876}
   - component: {fileID: 68808875}
   - component: {fileID: 68808877}
+  - component: {fileID: 68808878}
   m_Layer: 0
   m_Name: Side Scroller Placeholder
   m_TagString: Untagged
@@ -326,6 +327,17 @@ PolygonCollider2D:
     - - {x: 0.79999995, y: -0.26}
       - {x: 0.78999996, y: -0.26}
       - {x: 0.78999996, y: -0.26999998}
+--- !u!114 &68808878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 68808874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acbe02aca3bc44b35bb40f37fed525ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &752856486
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +348,7 @@ GameObject:
   - component: {fileID: 752856489}
   - component: {fileID: 752856488}
   - component: {fileID: 752856487}
+  - component: {fileID: 752856492}
   - component: {fileID: 752856490}
   - component: {fileID: 752856491}
   m_Layer: 0
@@ -431,6 +444,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a76d0d7354e48dbbbaf2b5a1046a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &752856492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 752856486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5855e5304bb64a6d954ae9c946668ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_delegateRaycaster: {fileID: 752856490}
 --- !u!1 &1121416482
 GameObject:
   m_ObjectHideFlags: 0
