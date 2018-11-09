@@ -81,7 +81,7 @@ public partial class GameManager : MonoBehaviour
     /// </summary>
     /// <returns><c>true</c>, if town camera was registered, <c>false</c> otherwise.</returns>
     /// <param name="camera">Camera.</param>
-    public bool RegisterTownCamera(Camera camera)
+    public bool RegisterTownCamera(TownCamera camera)
     {
         if (m_townCamera == null || m_townCamera == camera)
         {
@@ -91,6 +91,25 @@ public partial class GameManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Duplicate town camera detected.");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// Registers the quad used for displaying the sidescroller.
+    /// </summary>
+    /// <returns><c>true</c>, if sidescroll quad was registered, <c>false</c> otherwise.</returns>
+    /// <param name="sidescrollQuad">Sidescroll quad.</param>
+    public bool RegisterSidescrollQuad(SidescrollQuadScript sidescrollQuad)
+    {
+        if (m_sidescrollingQuad == null || m_sidescrollingQuad == sidescrollQuad)
+        {
+            m_sidescrollingQuad = sidescrollQuad;
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning("Duplicated sidescroll quad detected.");
             return false;
         }
     }
@@ -118,5 +137,7 @@ public partial class GameManager : MonoBehaviour
     /// <summary>
     /// The main camera in the currently-loaded town scene.
     /// </summary>
-    private Camera m_townCamera;
+    private TownCamera m_townCamera;
+
+    private SidescrollQuadScript m_sidescrollingQuad;
 }

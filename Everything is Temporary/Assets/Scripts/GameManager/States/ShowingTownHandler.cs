@@ -34,9 +34,6 @@ public partial class GameManager : MonoBehaviour
             // There must be a town camera in this state.
             Debug.Assert(gm.m_townCamera != null);
 
-            // There must similarly be an input blocker token.
-            Debug.Assert(gm.m_townInputBlocker != null);
-
             // Fade town camera.
             {
                 bool success = false;
@@ -59,15 +56,7 @@ public partial class GameManager : MonoBehaviour
                     return null;
             }
 
-            // Begin fading in book camera.
-            gm.FadeCamera(gm.BookCamera, 1, 0, 1, Color.black);
-
-            gm.BookCamera.enabled = true;
-            gm.m_townCamera.enabled = false;
-
-            // Enable book event system.
-            gm.m_townInputBlocker.Unsubscribe();
-            gm.m_townInputBlocker = null;
+            gm.m_townCamera.DisableCamera();
 
             return new ShowingBookHandler(gm);
         }

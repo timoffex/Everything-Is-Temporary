@@ -12,6 +12,17 @@ public partial class GameManager : MonoBehaviour
 
     public async Task LoadTown(string townScene)
     {
+        /*
+        // If this is the loaded town, don't do anything.
+        if (m_loadedTown == townScene)
+            return;
+        */
+
+        // Transition to the state where only the book is shown. If this
+        // is not possible, cancel.
+        if (!await SwitchToState(State.ShowingBook))
+            return;
+
         // Unload previous town, if any, and then proceed.
         if (m_loadedTown != null)
             await WaitForAsyncOperation(SceneManager.UnloadSceneAsync(m_loadedTown));
@@ -32,9 +43,4 @@ public partial class GameManager : MonoBehaviour
     /// The town that is currently loaded.
     /// </summary>
     private string m_loadedTown = null;
-
-    /// <summary>
-    /// TODO document
-    /// </summary>
-    private IUnsubscriber m_townInputBlocker = null;
 }

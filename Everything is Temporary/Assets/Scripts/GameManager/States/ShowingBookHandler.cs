@@ -16,19 +16,19 @@ public partial class GameManager : MonoBehaviour
             return State.ShowingBook;
         }
 
-        protected override async Task<StateHandler> SwitchTo_Impl(State state)
+        protected override Task<StateHandler> SwitchTo_Impl(State state)
         {
             switch (state)
             {
                 case State.ShowingTown:
-                    return await SwitchToTown();
+                    return Task.FromResult(SwitchToTown());
 
                 default:
                     return null;
             }
         }
 
-        private async Task<StateHandler> SwitchToTown()
+        private StateHandler SwitchToTown()
         {
             GameManager gm = GameManagerParent;
 
@@ -39,40 +39,9 @@ public partial class GameManager : MonoBehaviour
             // Since a town is loaded, there must be a town camera registered.
             Debug.Assert(gm.m_townCamera != null);
 
-            // Disable mouse inputs to pages.
-            gm.m_townInputBlocker = MainRaycastHelper.Singleton.BlockPageInput();
-
-            // Fade out main camera.
-            {
-                bool success = false;
-                SemaphoreSlim fadeSema = new SemaphoreSlim(0);
-
-                gm.FadeCamera(gm.BookCamera, 0, 1, 1, Color.black, () =>
-                {
-                    success = true;
-                    fadeSema.Release();
-                }, () =>
-                {
-                    success = false;
-                    fadeSema.Release();
-                });
-
-                await fadeSema.WaitAsync();
-
-                // If fading was canceled, bail out!
-                if (!success)
-                {
-                    gm.m_townInputBlocker.Unsubscribe();
-                    gm.m_townInputBlocker = null;
-                    return null;
-                }
-            }
-
-            // Begin fade in town camera.
+            gm.m_townCamera.SetRenderTarget(gm.m_sidescrollingQuad.GetRenderTexture());
             gm.FadeCamera(gm.m_townCamera, 1, 0, 1, Color.black);
-
-            gm.m_townCamera.enabled = true;
-            gm.BookCamera.enabled = false;
+            gm.m_townCamera.EnableCamera();
 
             return new ShowingTownHandler(gm);
         }

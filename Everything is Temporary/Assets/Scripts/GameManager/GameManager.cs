@@ -61,12 +61,8 @@ public partial class GameManager : MonoBehaviour
     /// if it was previously down.
     /// </summary>
     /// <param name="pageNumber">Page number.</param>
-    public async Task DisplayBookPage(int pageNumber)
+    public void DisplayBookPage(int pageNumber)
     {
-        // Must be in ShowingBook state.
-        if (!await SwitchToState(State.ShowingBook))
-            return;
-
         if (!Book.IsDisplayed)
             Book.IsDisplayed = true;
 
