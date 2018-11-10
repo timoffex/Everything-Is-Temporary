@@ -34,7 +34,7 @@ public class TownCamera : MonoBehaviour
     private void Awake()
     {
         m_camera = GetComponent<Camera>();
-        m_camera.enabled = true; //////////////////////////// CHANGE BACK TO FALSE
+        m_camera.enabled = false;
 
         GameManager.Singleton.RegisterTownCamera(this);
 		
