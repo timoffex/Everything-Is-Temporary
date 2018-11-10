@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FirstTown.unity
     guid: 2d2db3830acdf40f99c0ed91ae165c8b
+  - enabled: 1
+    path: Assets/Scenes/ExampleTown1.unity
+    guid: 524f977b7058d4a6d9e22f73f357c035
+  - enabled: 1
+    path: Assets/Scenes/ExampleTown2.unity
+    guid: 89cee4d1c21bf47129664795d855d75e
+  - enabled: 1
+    path: Assets/Scenes/ReshmaTown.unity
+    guid: 019b035a9564b412a8cdc6b40fe4dd01
   m_configObjects: {}
