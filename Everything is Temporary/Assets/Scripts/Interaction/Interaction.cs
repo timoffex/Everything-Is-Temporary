@@ -5,5 +5,10 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
 	public Condition condition;
-	public Reaction reaction;
+	//public Reaction reaction;
+	
+	private void Update()
+	{
+		//Debug.Log(
+	}
 }

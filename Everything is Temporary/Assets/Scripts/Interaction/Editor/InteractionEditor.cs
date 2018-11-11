@@ -9,17 +9,50 @@ public class InteractionEditor : Editor
 {
 	SerializedObject conditionSO;
 	
-	public Condition condition; // TODO: Make it a list of conditions later.
+	public Condition polyMorphicCondition; // TODO: Make it a list of conditions later.
+	
+	public GameObject GO;
 	
 	private void OnEnable()
 	{
-		interaction = (Interaction)target;
+
+	}
+	
+	public override void OnInspectorGUI()
+	{
+		base.OnInspectorGUI();
 		
-		conditionSO = new SerializedObject(interaction.condition);
+		serializedObject.Update();
 		
+		// Get the condition filled in by user.
+		polyMorphicCondition = (Condition)(serializedObject.FindProperty("condition").objectReferenceValue);
+		
+		// Draw nothing extra if the condition isn't set.
+		if (polyMorphicCondition == null) { return; }
+		
+		// Initialize.
+		conditionSO = new SerializedObject(polyMorphicCondition);
 		conditionProperties = new List<SerializedProperty>();
 		
-		/* Expose all properties for editing. */
+		ExposeConditionProperties();
+		
+		/* Add all editable properties to the editor. */
+		foreach (SerializedProperty property in conditionProperties)
+		{
+			string name = property.name;
+			string type = property.type;
+			
+			if (type == "PPtr<$GameObject>")
+			{
+				GO = (GameObject)EditorGUILayout.ObjectField(name, GO, typeof(GameObject), true);
+			}
+		}
+		
+		serializedObject.ApplyModifiedProperties();
+	}
+	
+	private void ExposeConditionProperties()
+	{
 		SerializedProperty conditionSP = conditionSO.GetIterator();
 		conditionSP.NextVisible(true); // "You need to call Next (true) on the first element to get to the first element." --Unity3D
 		SerializedProperty conditionEndSP = conditionSP.GetEndProperty();
@@ -39,27 +72,7 @@ public class InteractionEditor : Editor
 		}
 	}
 	
-	public override void OnInspectorGUI()
-	{
-		//base.OnInspectorGUI();
-		
-		serializedObject.Update();
-		
-		for (int i = 0; i < conditionProperties.Count; i++)
-		{
-			EditorGUILayout.PropertyField(conditionProperties[i]);
-		}
-		
-		serializedObject.ApplyModifiedProperties();
-	}
-	
 	private Interaction interaction;
 	
 	private List<SerializedProperty> conditionProperties;
-}
-
-public class CustomProperty {
-	
-	
-	
 }
