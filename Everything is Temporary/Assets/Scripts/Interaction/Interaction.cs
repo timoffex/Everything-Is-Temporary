@@ -5,10 +5,37 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
 	public Condition condition;
-	//public Reaction reaction;
+	public int conditionTypeIndex;
+	public string conditionType;
+	public List<GameObject> tempGameObjects;
+	
+	private void Start()
+	{
+		switch (conditionType)
+		{
+			case "WithinTrigger":
+				WithinTrigger withinTrigger = new WithinTrigger(tempGameObjects[0]);
+				condition = withinTrigger;
+			
+				break;
+				
+			case "HaveItem":
+			
+				break;
+				
+			default:
+			
+				break;
+		}
+	}
 	
 	private void Update()
 	{
-		//Debug.Log(
+		if (condition == null) { return; }
+		
+		if (condition.IsMet())
+		{
+			Debug.Log("Condition is met.");
+		}
 	}
 }

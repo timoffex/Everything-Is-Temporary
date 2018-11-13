@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayAudio : MonoBehaviour {
+public class Condition {
 
-
+	public virtual bool IsMet()
+	{
+		return false;
+	}
 
 }

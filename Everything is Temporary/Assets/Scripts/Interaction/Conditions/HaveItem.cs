@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Condition : ScriptableObject
-{
-	public virtual bool isMet()
+public class HaveItem : Condition {
+	
+	public override bool IsMet()
 	{
 		return false;
 	}
+	
 }

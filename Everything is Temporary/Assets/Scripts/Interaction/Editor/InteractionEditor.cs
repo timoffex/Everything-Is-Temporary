@@ -4,75 +4,39 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(Interaction))]
-[CanEditMultipleObjects]
+//[CanEditMultipleObjects]
 public class InteractionEditor : Editor
 {
-	SerializedObject conditionSO;
-	
-	public Condition polyMorphicCondition; // TODO: Make it a list of conditions later.
-	
-	public GameObject GO;
-	
 	private void OnEnable()
 	{
-
+		interaction = (Interaction)target;
 	}
 	
 	public override void OnInspectorGUI()
 	{
-		base.OnInspectorGUI();
-		
 		serializedObject.Update();
 		
-		// Get the condition filled in by user.
-		polyMorphicCondition = (Condition)(serializedObject.FindProperty("condition").objectReferenceValue);
+		// Draw the conditiion type menu, and update the value.
+		interaction.conditionTypeIndex = EditorGUILayout.Popup("Condition Type", interaction.conditionTypeIndex, conditionTypes);
+		interaction.conditionType = conditionTypes[interaction.conditionTypeIndex];
 		
-		// Draw nothing extra if the condition isn't set.
-		if (polyMorphicCondition == null) { return; }
-		
-		// Initialize.
-		conditionSO = new SerializedObject(polyMorphicCondition);
-		conditionProperties = new List<SerializedProperty>();
-		
-		ExposeConditionProperties();
-		
-		/* Add all editable properties to the editor. */
-		foreach (SerializedProperty property in conditionProperties)
+		switch (interaction.conditionType)
 		{
-			string name = property.name;
-			string type = property.type;
-			
-			if (type == "PPtr<$GameObject>")
-			{
-				GO = (GameObject)EditorGUILayout.ObjectField(name, GO, typeof(GameObject), true);
-			}
+			case "WithinTrigger":
+				interaction.tempGameObjects[0] = (GameObject)EditorGUILayout.ObjectField("Trigger", interaction.tempGameObjects[0], typeof(GameObject), true);
+				
+				break;
+				
+			case "HaveItem":
+				
+				
+				break;
 		}
 		
 		serializedObject.ApplyModifiedProperties();
 	}
 	
-	private void ExposeConditionProperties()
-	{
-		SerializedProperty conditionSP = conditionSO.GetIterator();
-		conditionSP.NextVisible(true); // "You need to call Next (true) on the first element to get to the first element." --Unity3D
-		SerializedProperty conditionEndSP = conditionSP.GetEndProperty();
-		while (conditionSP != null) {
-			string name = conditionSP.name;
-			string type = conditionSP.type;
-			
-			// Skip default properties.
-			if (name == "Base" || name == "m_Script") { goto Skip; }
-			
-			conditionProperties.Add(conditionSP);
-			
-			// Move to the next property if there's any.
-			Skip:
-				if (SerializedProperty.EqualContents(conditionSP, conditionEndSP)) { break; }
-				conditionSP.NextVisible(true); // Next() need to be called very carefully.
-		}
-	}
-	
 	private Interaction interaction;
 	
-	private List<SerializedProperty> conditionProperties;
+	private static string[] conditionTypes = {"WithinTrigger", "HaveItem"};
 }
