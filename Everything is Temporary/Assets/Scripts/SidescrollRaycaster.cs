@@ -26,6 +26,14 @@ public class SidescrollRaycaster : BaseRaycaster
         eventData.position = oldPosition;
     }
 
+#if UNITY_EDITOR
+    public BaseRaycaster DelegateRaycaster
+    {
+        get { return m_delegateRaycaster; }
+        set { m_delegateRaycaster = value; }
+    }
+#endif
+
     [SerializeField]
     [Tooltip("The sidescroll raycaster will forward mouse inputs from the" +
              " sidescrolling quad to this raycaster.")]
