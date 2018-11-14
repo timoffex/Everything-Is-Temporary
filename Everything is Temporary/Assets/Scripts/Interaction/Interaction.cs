@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,9 +14,9 @@ public class Interaction : MonoBehaviour
 		switch (conditionType)
 		{
 			case "WithinTrigger":
-				WithinTrigger withinTrigger = new WithinTrigger(tempGameObjects[0]);
+				WithinTrigger withinTrigger = new WithinTrigger(gameObject);
 				condition = withinTrigger;
-			
+				
 				break;
 				
 			case "HaveItem":
@@ -38,4 +38,4 @@ public class Interaction : MonoBehaviour
 			Debug.Log("Condition is met.");
 		}
 	}
-}
+}*/

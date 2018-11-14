@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -39,4 +39,4 @@ public class InteractionEditor : Editor
 	private Interaction interaction;
 	
 	private static string[] conditionTypes = {"WithinTrigger", "HaveItem"};
-}
+}*/

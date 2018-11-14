@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class HaveItem : Condition {
 	
-	public override bool IsMet()
-	{
-		return false;
-	}
+	
 	
 }

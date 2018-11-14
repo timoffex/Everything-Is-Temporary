@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WithinTrigger : Condition {
-	
-	public WithinTrigger(GameObject trigger)
+
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		m_trigger = trigger;
+		if (other.gameObject.name == "Player")
+		{
+			isMet = true;
+		}
 	}
 	
-	public override bool IsMet()
+	private void OnTriggerExit2D(Collider2D other)
 	{
-		return false;
+		if (other.gameObject.name == "Player")
+		{
+			isMet = false;
+		}
 	}
-	
-	private GameObject m_trigger;
-	private GameObject player;
 	
 }

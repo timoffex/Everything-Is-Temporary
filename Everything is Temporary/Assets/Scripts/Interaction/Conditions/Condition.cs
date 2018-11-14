@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Condition {
+public class Condition : MonoBehaviour {
 
 	public virtual bool IsMet()
 	{
-		return false;
+		return isMet;
 	}
+	
+	protected bool isMet;
 
 }
