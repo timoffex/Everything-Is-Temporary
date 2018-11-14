@@ -746,6 +746,7 @@ GameObject:
   - component: {fileID: 1710062394}
   - component: {fileID: 1710062393}
   - component: {fileID: 1710062395}
+  - component: {fileID: 1710062396}
   m_Layer: 0
   m_Name: WagonTrigger
   m_TagString: Untagged
@@ -800,5 +801,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7cb6e01bc4a92c4dba8159855976be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1710062396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710062392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a22b0ff18708644b800603cd10e0eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
