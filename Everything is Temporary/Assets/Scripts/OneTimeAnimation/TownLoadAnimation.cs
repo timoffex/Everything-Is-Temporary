@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TownLoadAnimation : MonoBehaviour {
 	
+	public string animationTriggerName;
+	
 	// This should be called when the town loads.
 	private void Start()
 	{

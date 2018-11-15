@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnterColliderAnimation : MonoBehaviour {
 	
+	public string animationTriggerName;
+	
 	private void Start()
 	{
 		m_animator = GetComponent<Animator>();
