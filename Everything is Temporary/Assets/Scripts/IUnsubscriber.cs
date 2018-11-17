@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+
+using UnityEngine;
 
 /// <summary>
 /// An "unsubscriber" in the observer pattern. Has a single Unsubscribe() method.
@@ -36,4 +40,49 @@ public class ActionUnsubscriber : IUnsubscriber
 
     private Action m_action;
     private bool m_used;
+}
+
+/// <summary>
+/// Removes an object from a list. Keeps a weak reference to both the list and
+/// the object. Can optionally perform an action on Unsubscribe().
+/// </summary>
+public class ListUnsubscriber<T> : IUnsubscriber where T : class
+{
+    public ListUnsubscriber(List<T> lst, T obj, Action<T> action = null)
+    {
+        m_list = new WeakReference<List<T>>(lst);
+        m_obj = new WeakReference<T>(obj);
+        m_action = action;
+        m_used = false;
+    }
+
+    ~ListUnsubscriber()
+    {
+        Unsubscribe();
+    }
+
+    public void Unsubscribe()
+    {
+        if (!m_used)
+        {
+            List<T> listRef;
+            T objRef;
+
+
+            if (!m_list.TryGetTarget(out listRef) || !m_obj.TryGetTarget(out objRef))
+                m_used = true;
+            else
+            {
+                listRef.Remove(objRef);
+                m_action?.Invoke(objRef);
+            }
+        }
+
+        m_used = true;
+    }
+
+    private bool m_used;
+    private WeakReference<List<T>> m_list;
+    private WeakReference<T> m_obj;
+    private Action<T> m_action;
 }
