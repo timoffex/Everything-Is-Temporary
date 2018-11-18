@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory {
 
     public Sprite itemImage;
 
@@ -31,7 +31,7 @@ public class Inventory : MonoBehaviour {
 
     private int[] currentIndex;
 
-    // Use this for initialization
+    /*// Use this for initialization
     void Start () {
 
         Time.fixedDeltaTime = 0.25f;
@@ -95,7 +95,7 @@ public class Inventory : MonoBehaviour {
 
         }
 
-    }
+    }*/
 
     public void AddItem (Item item) {
 
