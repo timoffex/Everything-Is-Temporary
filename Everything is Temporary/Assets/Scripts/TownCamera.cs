@@ -73,7 +73,7 @@ public class TownCamera : MonoBehaviour
             Vector3 targetPos = GetTargetPosition();
 
             // Don't change z coordinate.
-            targetPos.z = transform.position.z;
+            targetPos.z = m_cameraZ;
 
             // Move toward targetPos smoothly.
             transform.position = Vector3.Lerp(transform.position, targetPos, 0.2f);
@@ -119,7 +119,7 @@ public class TownCamera : MonoBehaviour
 
     private Camera m_camera;
 
-    private const float m_cameraZ = -1f;
+    private const float m_cameraZ = -10f;
     private const float m_maxOffset = 0.3f;
 
     /// <summary>

@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An interactive object that displays a dialog upon interaction. Use
+/// the down arrow key or walk away to stop the dialog and regain camera
+/// control.
+/// </summary>
 public class TemporaryDialogScript : MonoBehaviour, IInteractiveObject
 {
     public bool CanInteractWith(IInteractor interactor)
