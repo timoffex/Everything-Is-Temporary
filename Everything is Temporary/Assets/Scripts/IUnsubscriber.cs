@@ -27,7 +27,12 @@ public class ActionUnsubscriber : IUnsubscriber
 
     ~ActionUnsubscriber()
     {
-        Unsubscribe();
+        if (!m_used)
+        {
+            Debug.LogWarning("ActionUnsubscriber died before Unsubscribe() was called." +
+                             " Unsubscribe() will be called now.");
+            Unsubscribe();
+        }
     }
 
     public void Unsubscribe()
@@ -58,7 +63,12 @@ public class ListUnsubscriber<T> : IUnsubscriber where T : class
 
     ~ListUnsubscriber()
     {
-        Unsubscribe();
+        if (!m_used)
+        {
+            Debug.LogWarning("ListUnsubscriber died before Unsubscribe() was called." +
+                             " Unsubscribe() will be called now.");
+            Unsubscribe();
+        }
     }
 
     public void Unsubscribe()

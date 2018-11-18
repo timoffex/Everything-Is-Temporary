@@ -20,28 +20,18 @@ public class TestInteractor : MonoBehaviour, IInteractor
 
         IInteractiveObject nearest = m_objectTracker.GetClosest();
 
+        if (nearest.GetDistanceTo(this) > m_maximumInteractionDistance)
+            nearest = null;
+
         if (nearest != m_previousNearest)
         {
             nearest?.ShowSelectionVisual();
             m_previousNearest?.HideSelectionVisual();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (nearest == null)
-                Debug.Log("No closest interactive object.");
-            else if (nearest is MonoBehaviour)
-            {
-                var nearestMono = nearest as MonoBehaviour;
-
-                Debug.LogFormat("Closest interactive object is {0} at distance {1}.",
-                                nearestMono.gameObject.name, nearest.GetDistanceTo(this));
-            }
-            else
-            {
-                Debug.LogFormat("Closest interactive object is not a MonoBehaviour, but its" +
-                                " distance is {0}", nearest.GetDistanceTo(this));
-            }
+            nearest?.TryInteractWith(this);
         }
 
         m_previousNearest = nearest;
@@ -51,6 +41,10 @@ public class TestInteractor : MonoBehaviour, IInteractor
     {
         return transform.position;
     }
+
+
+    [SerializeField]
+    private float m_maximumInteractionDistance = 3;
 
     private InteractiveObjectTracker m_objectTracker;
     private IInteractiveObject m_previousNearest;

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ReshmaTown.unity
     guid: 019b035a9564b412a8cdc6b40fe4dd01
+  - enabled: 1
+    path: Assets/Scenes/Sidescroller Scenes/Town1.unity
+    guid: 339f4c83eb576462786ed546cdaf5c17
   m_configObjects: {}

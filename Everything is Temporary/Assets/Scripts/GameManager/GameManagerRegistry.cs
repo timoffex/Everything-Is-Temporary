@@ -36,6 +36,8 @@ public partial class GameManager : MonoBehaviour
         }
     }
 
+    public TownCamera TownCamera => m_townCamera;
+
     /// <summary>
     /// Registers the BookScript as the book object to be used in the game. If
     /// this returns false, that means that a book was already registered and
