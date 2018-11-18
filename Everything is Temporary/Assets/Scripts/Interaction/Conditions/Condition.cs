@@ -16,7 +16,7 @@ public class Condition : MonoBehaviour {
 	{
 		isMet = false;
 		
-		gameManager = GameManager.Singleton;
+		m_gameManager = GameManager.Singleton;
 		m_conditionManager = GetComponent<ConditionManager>();
 		
 		m_conditionManager.conditions.Add(this);
@@ -24,7 +24,7 @@ public class Condition : MonoBehaviour {
 	
 	protected bool isMet;
 	
-	protected GameManager gameManager;
+	protected GameManager m_gameManager;
 	protected ConditionManager m_conditionManager;
 	
 }

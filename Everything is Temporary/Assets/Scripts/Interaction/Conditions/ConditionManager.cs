@@ -11,12 +11,12 @@ public class ConditionManager : MonoBehaviour {
 		foreach(Condition condition in conditions)
 		{
 			if (!condition.IsMet()) {
-				Debug.Log("Some conditions aren't met.");
+				Debug.Log(gameObject.name + ": Some conditions aren't met.");
 				return;
 			}
 		}
 		
-		Debug.Log("All conditions are met!");
+		Debug.Log(gameObject.name + ": All conditions are met!");
 	}
 
 }

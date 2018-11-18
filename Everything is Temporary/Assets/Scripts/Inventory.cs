@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory {
+	
+	public delegate void ItemDelegate(Item item);
+	public event ItemDelegate OnItemAdd;
 
     public Sprite itemImage;
 
@@ -122,6 +125,8 @@ public class Inventory {
         inventory.Add(item);
 
         DisplayGrid();
+		
+		OnItemAdd?.Invoke(item);
 
     }
 
