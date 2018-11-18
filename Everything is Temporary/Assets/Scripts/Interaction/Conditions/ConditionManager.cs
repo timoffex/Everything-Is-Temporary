@@ -12,11 +12,14 @@ public class ConditionManager : MonoBehaviour {
 		{
 			if (!condition.IsMet()) {
 				Debug.Log(gameObject.name + ": Some conditions aren't met.");
+				
 				return;
 			}
 		}
 		
 		Debug.Log(gameObject.name + ": All conditions are met!");
+		
+		GetComponent<ReactionManager>().PlayAllReactions();
 	}
 
 }
