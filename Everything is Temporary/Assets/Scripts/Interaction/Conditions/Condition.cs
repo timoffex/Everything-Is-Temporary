@@ -12,12 +12,19 @@ public class Condition : MonoBehaviour {
 		return isMet;
 	}
 	
-	private void Awake()
+	protected virtual void Awake()
 	{
-		isTriggeringCondition = false;
 		isMet = false;
+		
+		gameManager = GameManager.Singleton;
+		m_conditionManager = GetComponent<ConditionManager>();
+		
+		m_conditionManager.conditions.Add(this);
 	}
 	
 	protected bool isMet;
+	
+	protected GameManager gameManager;
+	protected ConditionManager m_conditionManager;
 	
 }

@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 760624332}
   - component: {fileID: 760624331}
-  - component: {fileID: 760624333}
+  - component: {fileID: 760624334}
   m_Layer: 0
   m_Name: RedHatTrigger
   m_TagString: Untagged
@@ -587,7 +587,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &760624333
+--- !u!114 &760624334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -595,11 +595,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 760624330}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5259c9515c79487459876a4772a1fb6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ec3ae41c0ea581438ff7c34c4d42476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTriggeringCondition: 0
-  itemName: 
+  conditions: []
 --- !u!1001 &995375180
 Prefab:
   m_ObjectHideFlags: 0
@@ -813,7 +812,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1710062394}
   - component: {fileID: 1710062393}
+  - component: {fileID: 1710062396}
   - component: {fileID: 1710062395}
+  - component: {fileID: 1710062397}
   m_Layer: 0
   m_Name: WagonTrigger
   m_TagString: Untagged
@@ -870,4 +871,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7cb6e01bc4a92c4dba8159855976be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTriggeringCondition: 1
+--- !u!114 &1710062396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710062392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec3ae41c0ea581438ff7c34c4d42476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
+--- !u!114 &1710062397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710062392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5259c9515c79487459876a4772a1fb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   isTriggeringCondition: 0
+  itemName: abc

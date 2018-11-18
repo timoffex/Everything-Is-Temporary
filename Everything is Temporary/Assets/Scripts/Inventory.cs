@@ -96,6 +96,18 @@ public class Inventory {
         }
 
     }*/
+	
+	public Inventory() {
+		
+        inventory = new List<Item>();
+
+        grid = new Item[gridSize, gridSize];
+
+        maxInventorySize = gridSize * gridSize;
+
+        currentIndex = new int[2];
+		
+	}
 
     public void AddItem (Item item) {
 
@@ -171,9 +183,26 @@ public class Inventory {
 
         Debug.Log("Item not found. Returning empty Item");
 
-        return item;
+        //return item;
+		return null;
 
     }
+	
+	/*public bool DoesItemExist (string name) {
+		
+        foreach (Item i in inventory) {
+
+            if (i.GetName() == name) {
+
+                return true;
+
+            }
+
+        }
+		
+		return false;
+		
+	}*/
 
     public void DisplayGrid () {
 

@@ -15,6 +15,11 @@ public class WithinTrigger : Condition {
 		if (other.gameObject.name == "Player")
 		{
 			isMet = true;
+			
+			if (isTriggeringCondition)
+			{
+				m_conditionManager.CheckAllConditions();
+			}
 		}
 	}
 	

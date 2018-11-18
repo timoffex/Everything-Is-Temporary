@@ -8,17 +8,15 @@ public class HaveItem : Condition {
 	
 	public override bool IsMet()
 	{
-		isMet = (gameManager.inventory.FindItemByName(itemName) != null) ? true : false;
+		if (gameManager.inventory.FindItemByName(itemName) != null) {
+			isMet = true;
+		}
+		else {
+			isMet = false;
+		}
 		
 		Debug.Log("HaveItem(" + itemName + ")is " + isMet);
 		return isMet;
 	}
-	
-	private void Awake()
-	{
-		gameManager = GameManager.Singleton;
-	}
-	
-	private GameManager gameManager;
 	
 }

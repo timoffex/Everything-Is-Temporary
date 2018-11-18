@@ -61,9 +61,10 @@ public partial class GameManager : MonoBehaviour
 		inventory = new Inventory();
 		
 		// Add some random items to inventory for testing.
-		Item item0 = new Item("item0", 1);
-		Item item1 = new Item("item1", 1);
-		Item item2 = new Item("item2", 20);
+		inventory.AddItem(new Item("item0", 1));
+		inventory.AddItem(new Item("item1", 1));
+		inventory.AddItem(new Item("item2", 20));
+		inventory.AddItem(new Item("brick", 3));
     }
 
     /// <summary>
