@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brick : MonoBehaviour {
+// The base class for picking up general items.
+// If some special items need to be picked up differently, inherit from it!
+public class ItemPickup : MonoBehaviour {
 	
 	// Make myself an item.
 	private void Awake()
 	{
-		m_item = new Item(GetComponent<SpriteRenderer>().sprite, "Brick", 1);
-		
 		m_gameManager = GameManager.Singleton;
 		m_inventory = m_gameManager.inventory;
 	}
@@ -24,7 +24,7 @@ public class Brick : MonoBehaviour {
 		}
 	}
 	
-	private Item m_item;
+	[SerializeField] private Item m_item;
 	
 	private GameManager m_gameManager;
 	private Inventory m_inventory;

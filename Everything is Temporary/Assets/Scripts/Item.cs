@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[Serializable]
 public class Item : IComparable<Item>, IEquatable<Item> {
 
     private Sprite image;
 
-    private string name;
+    [SerializeField] private string name;
 
-    private int quantity;
+    [SerializeField] private int quantity;
 
     private int[] position;
 
