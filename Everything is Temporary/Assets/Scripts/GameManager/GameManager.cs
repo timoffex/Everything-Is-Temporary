@@ -14,6 +14,8 @@ using UnityEngine;
 /// <remarks>See also the GameManagerRegistry.cs file.</remarks>
 public partial class GameManager : MonoBehaviour
 {
+	public Inventory inventory;
+	
     /// <summary>
     /// The GameManager instance for the current game.
     /// </summary>
@@ -54,6 +56,14 @@ public partial class GameManager : MonoBehaviour
             // Stop self.
             Destroy(gameObject);
         }
+		
+		// Create an inventory system.
+		inventory = new Inventory();
+		
+		// Add some random items to inventory for testing.
+		inventory.AddItem(new Item("Item0", 1));
+		inventory.AddItem(new Item("Item1", 1));
+		inventory.AddItem(new Item("Item2", 20));
     }
 
     /// <summary>

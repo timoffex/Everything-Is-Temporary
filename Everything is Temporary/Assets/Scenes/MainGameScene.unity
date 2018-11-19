@@ -330,7 +330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 93261206}
   - component: {fileID: 93261204}
-  - component: {fileID: 93261205}
   m_Layer: 0
   m_Name: Left Camera
   m_TagString: Untagged
@@ -378,13 +377,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &93261205
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 93261203}
-  m_Enabled: 1
 --- !u!4 &93261206
 Transform:
   m_ObjectHideFlags: 0
@@ -2224,7 +2216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 516744542}
   - component: {fileID: 516744540}
-  - component: {fileID: 516744541}
   m_Layer: 0
   m_Name: Right Camera
   m_TagString: Untagged
@@ -2272,13 +2263,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &516744541
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 516744539}
-  m_Enabled: 1
 --- !u!4 &516744542
 Transform:
   m_ObjectHideFlags: 0
@@ -3453,7 +3437,6 @@ GameObject:
   m_Component:
   - component: {fileID: 777256796}
   - component: {fileID: 777256795}
-  - component: {fileID: 777256794}
   - component: {fileID: 777256798}
   - component: {fileID: 777256797}
   m_Layer: 0
@@ -3463,13 +3446,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &777256794
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 777256793}
-  m_Enabled: 1
 --- !u!20 &777256795
 Camera:
   m_ObjectHideFlags: 0
@@ -3554,7 +3530,6 @@ GameObject:
   m_Component:
   - component: {fileID: 779553810}
   - component: {fileID: 779553808}
-  - component: {fileID: 779553809}
   m_Layer: 0
   m_Name: Right Camera
   m_TagString: Untagged
@@ -3602,13 +3577,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &779553809
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 779553807}
-  m_Enabled: 1
 --- !u!4 &779553810
 Transform:
   m_ObjectHideFlags: 0
@@ -6656,7 +6624,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1348202869}
   - component: {fileID: 1348202867}
-  - component: {fileID: 1348202868}
   m_Layer: 0
   m_Name: Right Camera
   m_TagString: Untagged
@@ -6704,13 +6671,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1348202868
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1348202866}
-  m_Enabled: 1
 --- !u!4 &1348202869
 Transform:
   m_ObjectHideFlags: 0
@@ -6733,7 +6693,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1351774586}
   - component: {fileID: 1351774584}
-  - component: {fileID: 1351774585}
   m_Layer: 0
   m_Name: Right Camera
   m_TagString: Untagged
@@ -6781,13 +6740,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1351774585
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1351774583}
-  m_Enabled: 1
 --- !u!4 &1351774586
 Transform:
   m_ObjectHideFlags: 0
@@ -7518,7 +7470,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1552752237}
   - component: {fileID: 1552752235}
-  - component: {fileID: 1552752236}
   m_Layer: 0
   m_Name: Left Camera
   m_TagString: Untagged
@@ -7566,13 +7517,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1552752236
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1552752234}
-  m_Enabled: 1
 --- !u!4 &1552752237
 Transform:
   m_ObjectHideFlags: 0
@@ -7923,7 +7867,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1665748919}
   - component: {fileID: 1665748917}
-  - component: {fileID: 1665748918}
   m_Layer: 0
   m_Name: Left Camera
   m_TagString: Untagged
@@ -7971,13 +7914,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1665748918
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1665748916}
-  m_Enabled: 1
 --- !u!4 &1665748919
 Transform:
   m_ObjectHideFlags: 0
@@ -8422,7 +8358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1750106867}
   - component: {fileID: 1750106865}
-  - component: {fileID: 1750106866}
   m_Layer: 0
   m_Name: Left Camera
   m_TagString: Untagged
@@ -8470,13 +8405,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1750106866
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1750106864}
-  m_Enabled: 1
 --- !u!4 &1750106867
 Transform:
   m_ObjectHideFlags: 0
@@ -9618,7 +9546,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1970048048}
   - component: {fileID: 1970048046}
-  - component: {fileID: 1970048047}
   m_Layer: 0
   m_Name: Left Camera
   m_TagString: Untagged
@@ -9666,13 +9593,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1970048047
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1970048045}
-  m_Enabled: 1
 --- !u!4 &1970048048
 Transform:
   m_ObjectHideFlags: 0
@@ -9770,7 +9690,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1985367923}
   - component: {fileID: 1985367921}
-  - component: {fileID: 1985367922}
   m_Layer: 0
   m_Name: Right Camera
   m_TagString: Untagged
@@ -9818,13 +9737,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1985367922
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1985367920}
-  m_Enabled: 1
 --- !u!4 &1985367923
 Transform:
   m_ObjectHideFlags: 0
