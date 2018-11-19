@@ -11,7 +11,7 @@ public class TemporaryDialogScript : MonoBehaviour, IInteractiveObject
 {
     public bool CanInteractWith(IInteractor interactor)
     {
-        return m_cameraFocus == null;
+        return enabled && m_cameraFocus == null;
     }
 
     public float GetDistanceTo(IInteractor interactor)

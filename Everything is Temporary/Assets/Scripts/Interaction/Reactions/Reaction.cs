@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reaction : MonoBehaviour {
-	
-	// Always override.
-	public virtual void React() {}
-	
-	protected virtual void Awake()
-	{
-		m_reactionManager = GetComponent<ReactionManager>();
-		
-		m_reactionManager.reactions.Add(this);
-	}
+public abstract class Reaction : MonoBehaviour
+{
+    public abstract void React();
 
-	protected ReactionManager m_reactionManager;
-	
+    protected virtual void Awake()
+    {
+        m_reactionManager = GetComponent<ReactionManager>();
+
+        m_reactionManager.reactions.Add(this);
+    }
+
+    protected ReactionManager m_reactionManager;
+
 }

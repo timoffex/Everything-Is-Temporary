@@ -12,6 +12,10 @@ public class TownCamera : MonoBehaviour
 {
     public GameObject player;
 
+    [Tooltip("Desired difference between camera's Y position and" +
+             " player's Y position.")]
+    public float playerYOffset;
+
     public void SetRenderTarget(RenderTexture renderTexture)
     {
         m_camera.targetTexture = renderTexture;
@@ -97,6 +101,7 @@ public class TownCamera : MonoBehaviour
             // center of the screen and moves a little bit horizontally, the
             // camera should not move until the player passes some threshold.
             Vector3 pos = player.transform.position;
+            pos.y += playerYOffset;
 
             float cameraX = transform.position.x;
 

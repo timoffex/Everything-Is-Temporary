@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: f2ecdf936285448bc83849ea8a88d3f0
+guid: 0a542ed693eb04f69ab8a17ce8eb59e7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: eit_protagwalk_0
-    21300002: eit_protagwalk_1
-    21300004: eit_protagwalk_2
-    21300006: eit_protagwalk_3
+    21300000: gmaidle-Sheet_0
+    21300002: gmaidle-Sheet_1
+    21300004: gmaidle-Sheet_2
+    21300006: gmaidle-Sheet_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,28 +84,17 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eit_protagwalk_0
+      name: gmaidle-Sheet_0
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 37
-        height: 54
+        x: 8
+        y: 3
+        width: 89
+        height: 182
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -113,19 +102,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 068a6d51279fc408f95c5988e52499fa
+      spriteID: 031f4738aee274aab9f2a8635321811f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eit_protagwalk_1
+      name: gmaidle-Sheet_1
       rect:
         serializedVersion: 2
-        x: 55
-        y: 0
-        width: 36
-        height: 53
+        x: 108
+        y: 3
+        width: 89
+        height: 181
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,19 +122,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bd810fef03c04c5599557e4ed46eaf7
+      spriteID: 3f6a02e8b447740d083151d2a0f27d59
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eit_protagwalk_2
+      name: gmaidle-Sheet_2
       rect:
         serializedVersion: 2
-        x: 105
-        y: 0
-        width: 36
-        height: 52
+        x: 208
+        y: 3
+        width: 89
+        height: 180
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,19 +142,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 440fced90c8bd41108ac6fbb6b7e6fca
+      spriteID: b31129b543bb1400191d1a34893f1b6f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eit_protagwalk_3
+      name: gmaidle-Sheet_3
       rect:
         serializedVersion: 2
-        x: 155
-        y: 0
-        width: 37
-        height: 53
+        x: 308
+        y: 3
+        width: 89
+        height: 181
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,7 +162,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9154e2351ec274310b3f4930374eae2d
+      spriteID: cc77ed64d12a24b5aa6ea9d522f51ccd
       vertices: []
       indices: 
       edges: []
@@ -181,7 +170,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2a44b8c1b69ff401cbb0ec48b09d063c
+    spriteID: e4ea692c098754148a281b4f4b9935f9
     vertices: []
     indices: 
     edges: []

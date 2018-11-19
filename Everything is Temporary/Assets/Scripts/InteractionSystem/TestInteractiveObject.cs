@@ -5,8 +5,15 @@
 /// </summary>
 public class TestInteractiveObject : MonoBehaviour, IInteractiveObject
 {
-    public bool CanInteractWith(IInteractor interactor) => true;
-    public bool TryInteractWith(IInteractor interactor) => true;
+    public bool CanInteractWith(IInteractor interactor)
+    {
+        return enabled;
+    }
+
+    public bool TryInteractWith(IInteractor interactor)
+    {
+        return enabled;
+    }
 
     public float GetDistanceTo(IInteractor interactor)
     {
