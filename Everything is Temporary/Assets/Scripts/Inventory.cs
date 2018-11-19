@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory {
+	
+	public delegate void ItemDelegate(Item item);
+	public event ItemDelegate OnItemAdd;
 
     public Sprite itemImage;
 
@@ -31,7 +34,7 @@ public class Inventory : MonoBehaviour {
 
     private int[] currentIndex;
 
-    // Use this for initialization
+    /*// Use this for initialization
     void Start () {
 
         Time.fixedDeltaTime = 0.25f;
@@ -95,7 +98,19 @@ public class Inventory : MonoBehaviour {
 
         }
 
-    }
+    }*/
+	
+	public Inventory() {
+		
+        inventory = new List<Item>();
+
+        grid = new Item[gridSize, gridSize];
+
+        maxInventorySize = gridSize * gridSize;
+
+        currentIndex = new int[2];
+		
+	}
 
     public void AddItem (Item item) {
 
@@ -110,6 +125,8 @@ public class Inventory : MonoBehaviour {
         inventory.Add(item);
 
         DisplayGrid();
+		
+		OnItemAdd?.Invoke(item);
 
     }
 
@@ -171,9 +188,26 @@ public class Inventory : MonoBehaviour {
 
         Debug.Log("Item not found. Returning empty Item");
 
-        return item;
+        //return item;
+		return null;
 
     }
+	
+	/*public bool DoesItemExist (string name) {
+		
+        foreach (Item i in inventory) {
+
+            if (i.GetName() == name) {
+
+                return true;
+
+            }
+
+        }
+		
+		return false;
+		
+	}*/
 
     public void DisplayGrid () {
 

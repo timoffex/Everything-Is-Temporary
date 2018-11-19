@@ -31,17 +31,12 @@ public class Item : IComparable<Item>, IEquatable<Item> {
 
     }
 
-    // Use this for initialization
+    /*// Use this for initialization
     void Start () {
 
         position = new int[2];
         
-    }
-
-    // Update is called once per frame
-    void Update () {
-        
-    }
+    }*/
 
     public Sprite GetImage () {
 
